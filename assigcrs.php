@@ -5,7 +5,7 @@ $name = $_POST['name'];
 $c_id = $_POST['c_id'];
 $c_num = $_POST['c_num'];
 
-$sql = "INSERT INTO teacher (t_name, c_id,  c_num) VALUES ('$name', '$c_id', '$c_num')";
+$sql = "INSERT INTO assign_course (t_name, c_id,  c_num) VALUES ('$name', '$c_id', '$c_num')";
 
 if(isset($_POST["register"])){
     if(mysqli_query($conn,$sql))
