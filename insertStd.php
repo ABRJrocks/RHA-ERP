@@ -12,7 +12,13 @@ $sql = "INSERT INTO std (fname, lname, sap_id, semester, email) VALUES ('$fname'
 if(isset($_POST["register"])){
     if(mysqli_query($conn,$sql))
     {
-        echo"Data Insert!";
+        ?>   
+        <script>
+        alert("Data Inserted!")
+        window.open("http://localhost/rha-erp/st_register.html","_self")
+
+    </script>
+        <?php
     }
     else
     {
