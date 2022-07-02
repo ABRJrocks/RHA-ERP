@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2022 at 02:41 PM
+-- Generation Time: Jul 02, 2022 at 02:52 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -40,7 +40,8 @@ CREATE TABLE `std` (
 --
 
 INSERT INTO `std` (`fname`, `lname`, `sap_id`, `semester`, `email`) VALUES
-('Abdul', 'Rafay', 25601, '1', '');
+('Abdul', 'Rafay', 25601, '1', ''),
+('Ahmad', 'Raza', 234398, '5', 'ahmadraza16042002@gmail.com');
 
 --
 -- Indexes for dumped tables
