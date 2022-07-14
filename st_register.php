@@ -54,7 +54,7 @@ $res = mysqli_num_rows($data);
               Dashboard
             </a>
             <div class="sb-sidenav-menu-heading">Serivces</div>
-            <a class="nav-link collapsed" href="st_register.php">
+            <a class="nav-link collapsed" href="sassign_course.php">
               Student Data
             </a>
             <a class="nav-link collapsed" href="assign_course.php">
@@ -93,37 +93,54 @@ $res = mysqli_num_rows($data);
         <!--form-->
         <div class="row justify-content-center my-5">
           <div class="col-lg-6">
-            <form action="assigcrs.php" method="POST">
-              <div class="form-floating my-5">
-                <input name="name" type="name" id="name" placeholder="e.g. Hasnain Sajid" class="form-control" />
-                <label for="name" class="form-label">Full Name</label>
-              </div>
+          <form action="" method="post">
+          <div class="form-floating my-5">
+            <input
+            name="name"
+              type="name"
+              id="name"
+              placeholder="e.g. Muhammad"
+              class="form-control"
+            />
+            <label for="name" class="form-label">First Name:</label>
+          </div>
 
-              <label for="course" class="form-label">Course</label>
-              <select name="c_id" id="course" class="form-select" style="margin-bottom: 20px;">
-                <?php
-                if ($res) {
-                  while ($res = mysqli_fetch_array($data)) {
-                    $course_name = $res['c_name'];
-                    $course_id = $res['c_id'];
-                    echo '<option value="' . $course_id . ' ">' . $course_name . '</option>';
-                  }
-                }
-                ?>
-              </select>
+          <div class="form-floating my-5">
+            <input
+            name="St_lname"
+              type="name"
+              class="form-control"
+              id="St_lname"
+              placeholder="e.g Ahmad"
+            />
+            <label  for="St_lname" class="form-label">Last Name:</label>
+          </div>
+          <div class="form-floating my-5">
+            <input
+              name="email"
+              type="text"
+              class="form-control"
+              id="email-std"
+              placeholder="Example@rhaerp.com"
+            />
+            <label  name="email" class="form-label">Email</label>
+          </div>
 
-              <label for="num_of_lec" class="form=label">Number of Lectures</label>
-              <select name="c_num" id="num_of_lec" class="form-select">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-              <br>
-              <button name="register" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Register</button>
-              <a href="index.html" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
-            </form>
-
+          <label name="Semester" for="Semester" class="form=label">Semester</label>
+            <select name="Semester" id="Semester" class="form-select">
+              <option value="1">1st</option>
+              <option value="2">2nd</option>
+              <option value="3">3rd</option>
+              <option value="4">4th</option>
+              <option value="5">5th</option>
+              <option value="6">6th</option>
+              <option value="7">7th</option>
+              <option value="8">8th</option>
+            </select>
+            <br>
+            <button value="register" name="register" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Register</button>
+            <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
+        </form>
       </main>
       <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid px-4">
@@ -155,3 +172,35 @@ else {
 </body>
 
 </html>
+
+<?php
+$fname = $_POST['name'];
+$St_lname = $_POST['St_lname'];
+$Semester = $_POST['Semester'];
+$email = $_POST['email'];
+
+$sql = "INSERT INTO std (fname, lname, semester, email) VALUES ('$fname', '$St_lname', '$Semester', '$email')";
+
+if(isset($_POST["register"])){
+    if(mysqli_query($conn,$sql))
+    {
+        ?>   
+        <script>
+        alert("Data Inserted!")
+        window.open("http://localhost/rha-erp/st_register.html","_self")
+
+    </script>
+        <?php
+    }
+    else
+    {
+        ?>   
+        <script>
+        alert("Data Inserted!")
+        window.open("http://localhost/rha-erp/st_register.php","_self")
+
+    </script>
+        <?php
+    }
+}
+?>

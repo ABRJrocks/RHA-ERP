@@ -50,7 +50,7 @@ if($_SESSION["fname"]) {
                             Dashboard
                         </a>
                         <div class="sb-sidenav-menu-heading">Serivces</div>
-                        <a class="nav-link collapsed" href="st_register.html">
+                        <a class="nav-link collapsed" href="st_register.php">
                             Student Data
                         </a>
                         <a class="nav-link collapsed" href="assign_course.php">
@@ -62,7 +62,7 @@ if($_SESSION["fname"]) {
                         <a class="nav-link collapsed" href="datesheet.html">
                             Datesheet
                         </a>
-                        <a class="nav-link collapsed" href="database.html">
+                        <a class="nav-link collapsed" href="search.php">
                             Find Record
                         </a>
                         <a class="nav-link collapsed" href="courses.html">

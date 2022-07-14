@@ -1,5 +1,6 @@
 <?php include 'connection.php';
-$search = $_GET['search'];
+session_start();
+if($_SESSION["fname"]) { 
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +32,7 @@ $search = $_GET['search'];
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -42,7 +43,7 @@ $search = $_GET['search'];
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Home</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -74,7 +75,7 @@ $search = $_GET['search'];
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Admin
+                    <?php echo $_SESSION["fname"];?>
                 </div>
             </nav>
         </div>
@@ -102,12 +103,13 @@ $search = $_GET['search'];
 
                             <!-- PHP CODE -->
                             <?php
-                            $query = "SELECT * FROM  std WHERE sap_id=$search";
-                            $data = mysqli_query($conn, $query);
-                            $res = mysqli_num_rows($data);
-                            if ($res) {
-                                while ($row = mysqli_fetch_array($data)) {
-                            ?>
+                            if (count($_GET)>0) {
+                                $search = $_GET['search'];
+                                $query = "SELECT * FROM  std WHERE sap_id=$search";
+                                $data = mysqli_query($conn, $query);
+                                if ($data) {
+                                    while ($row = mysqli_fetch_array($data)) {
+                                        ?>
                                     <tr>
                                         <th scope="row"><?php echo $row['sap_id']; ?></th>
                                         <td><?php echo $row['fname']; ?></td>
@@ -117,15 +119,16 @@ $search = $_GET['search'];
                                         <td> <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="edit_student.php?sap_id=<?php echo $row['sap_id']; ?>">Edit</a></button></td>
                                         <td> <button type="button" class="btn btn-danger"> <a style="color: white; text-decoration: none;" onclick="return confirm('Are you sure, you want to delete?')" href="delete_student.php?sap_id=<?php echo $row['sap_id']; ?>">Delete</a></td>
                                     </tr>
-                                <?php
+                                    <?php
                                 }
                             } else {
                                 ?>
                                 <tr>
                                     <td>No Data Found</td>
                                 </tr>
-                            <?php
+                                <?php
                             }
+                        }
                             ?>
                         </tbody>
                     </table>
@@ -148,6 +151,12 @@ $search = $_GET['search'];
     </footer>
     </div>
     </div>
+    <?php 
+}
+else {
+    ?><h1>Please Login to continue.Press <a href="login.php">Here<a></h1><?php
+}
+ ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
