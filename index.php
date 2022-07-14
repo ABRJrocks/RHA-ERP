@@ -1,3 +1,8 @@
+<?php
+session_start();
+if($_SESSION["fname"]) { 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +34,7 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -45,7 +50,7 @@
                             Dashboard
                         </a>
                         <div class="sb-sidenav-menu-heading">Serivces</div>
-                        <a class="nav-link collapsed" href="assign_course.php">
+                        <a class="nav-link collapsed" href="st_register.html">
                             Student Data
                         </a>
                         <a class="nav-link collapsed" href="assign_course.php">
@@ -70,9 +75,10 @@
                         </a>
                     </div>
                 </div>
+                
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Admin
+                    <?php echo $_SESSION["fname"];?>
                 </div>
             </nav>
         </div>
@@ -134,6 +140,12 @@
             </footer>
         </div>
     </div>
+    <?php 
+}
+else {
+    ?><h1>Please Login to continue.Press <a href="login.php">Here<a></h1><?php
+}
+ ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>

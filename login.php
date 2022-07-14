@@ -1,3 +1,24 @@
+<?php
+require 'connection.php';
+error_reporting(0);
+    session_start();
+    $message="";
+    $email = $_POST['email'];
+    $pass = $_POST['pass'];
+    $sql= "SELECT * FROM register WHERE email='$email' and pass ='$pass'";
+    if(count($_POST)>0) {
+        $result = mysqli_query($conn,$sql);
+        $row  = mysqli_fetch_array($result);
+        if(is_array($row)) {
+        $_SESSION["fname"] = $row['fname'];
+        } else {
+         $message = "Invalid Username or Password!";
+        }
+    }
+    if(isset($_SESSION["fname"])) {
+    header("Location:index.php");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,13 +41,15 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form>
+                                        <form method='Post'>
+                                        
+                                        <div><?php if($message!="") { echo "<div class='alert alert-danger'>" . $message . "</div>"; } ?></div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com"  />
                                                 <label for="inputEmail">Email address</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                                <input class="form-control" name="pass" id="Password" type="password" placeholder="Password"  />
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="form-check mb-3">
@@ -35,12 +58,12 @@
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="password.html">Forgot Password?</a>
-                                                <a class="btn btn-primary" href="index.html">Login</a>
+                                                <button type='submit' class= 'btn btn-primary'>Login</button>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+                                        <div class="small"><a href="register.php">Need an account? Sign up!</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -65,5 +88,6 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+        
     </body>
 </html>
