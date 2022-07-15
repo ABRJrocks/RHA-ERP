@@ -82,7 +82,12 @@ if($_SESSION["fname"]) {
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    
+                <form action="search_course.php" method="GET" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                        <div style="margin-bottom: 20px;" class="input-group">
+                            <input class="form-control" name="search" value="" type="text" placeholder="Enter Course name" />
+                            <button class="btn btn-primary" id="std-search" type="submit"> <i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
