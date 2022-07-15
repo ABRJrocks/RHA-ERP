@@ -2,21 +2,12 @@
 
 include 'connection.php';
 error_reporting(0);
-$fnameerror ="";
-$lnameerror ="";
-$emailerror ="";
-$passerror ="";
-if(empty($_POST['fname'])){ $fnameerror = "Please Enter First Name <br>";}
-if(empty($_POST['lname'])){ $lnameerror = "Please Enter Last Name<br>";}
-if(empty($_POST['email'])){ $emailerror = "Please Enter Email<br>";}
-if(empty($_POST['pass'])){ $passerror = "Please Enter Password<br>";}
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $email = $_POST['email'];
 $pass = $_POST['pass'];
-
-$sql = "INSERT INTO register (fname, lname, email, pass) VALUES ('$fname', '$lname', '$email', '$pass')";
 if(count($_POST)>0){
+$sql = "INSERT INTO register (fname, lname, email, pass) VALUES ('$fname', '$lname', '$email', '$pass')";
     if(mysqli_query($conn,$sql))
     {
         ?>
@@ -61,35 +52,31 @@ if(count($_POST)>0){
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="fname" id="fname" type="text" placeholder="Enter Your First Name" />
+                                                        <input class="form-control" name="fname" id="fname" type="text" placeholder="Enter Your First Name" required/>
                                                         <label for="fname">First name</label>
                                                     </div>
-                                                    <div><?php if($fnameerror!="") { echo "<div class='alert alert-danger'>" . $fnameerror . "</div>"; } ?></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" name="lname" id="lname" type="text" placeholder="Enter Your Last Name" />
+                                                        <input class="form-control" name="lname" id="lname" type="text" placeholder="Enter Your Last Name" required/>
                                                         <label for="lname">Last name</label>
                                                     </div>
-                                                    <div><?php if($lnameerror!="") { echo "<div class='alert alert-danger'>" . $lnameerror . "</div>"; } ?></div>
-                                                </div>
+                                                    </div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com" />
+                                                <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com" required/>
                                                 <label for="email">Email address</label>
-                                                <div><?php if($emailerror!="") { echo "<div class='alert alert-danger'>" . $emailerror . "</div>"; } ?></div>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="pass" id="pass" type="password" placeholder="Create a password" />
+                                                        <input class="form-control" name="pass" id="pass" type="password" placeholder="Create a password" required/>
                                                         <label for="pass">Password</label>
                                                     </div>
-                                                    <div><?php if($passerror!="") { echo "<div class='alert alert-danger'>" . $passerror . "</div>"; } ?></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
+                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" required/>
                                                         <label for="inputPasswordConfirm">Confirm Password</label>
                                                     </div>
                                                 </div>

@@ -45,11 +45,11 @@ error_reporting(0);
                                         
                                         <div><?php if($message!="") { echo "<div class='alert alert-danger'>" . $message . "</div>"; } ?></div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com"  />
+                                                <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com" required>
                                                 <label for="inputEmail">Email address</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="pass" id="Password" type="password" placeholder="Password"  />
+                                                <input class="form-control" name="pass" id="Password" type="password" placeholder="Password"  required>
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="form-check mb-3">

@@ -118,7 +118,7 @@ if($_SESSION["fname"]) {
                                     <option value="8">8th</option>
                                 </select>
                                 <br>
-                                <button value="Update" name="update-btn" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Register</button>
+                                <button value="Update" name="update-btn" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Update</button>
                                 <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
                             </form>
                         </div>

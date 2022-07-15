@@ -1,4 +1,7 @@
-<?php include 'connection.php' ?>
+<?php include 'connection.php';
+session_start();
+if($_SESSION["fname"]) { 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +32,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -40,12 +43,12 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Home</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
                         <div class="sb-sidenav-menu-heading">Serivces</div>
-                        <a class="nav-link collapsed" href="assign_course.php">
+                        <a class="nav-link collapsed" href="st_register.php">
                             Student Data
                         </a>
                         <a class="nav-link collapsed" href="assign_course.php">
@@ -72,7 +75,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Admin
+                    <?php echo $_SESSION["fname"];?>
                 </div>
             </nav>
         </div>
@@ -147,6 +150,12 @@
     </footer>
     </div>
     </div>
+    <?php 
+}
+else {
+    ?><h1>Please Login to continue.Press <a href="login.php">Here<a></h1><?php
+}
+ ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
