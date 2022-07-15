@@ -114,7 +114,7 @@ if($_SESSION["fname"]) {
                                         <td><?php echo $row['t_name']; ?></td>
                                         <td><?php echo $row['c_name']; ?></td>
                                         <td><?php echo $row['c_num']; ?></td>
-                                        <td> <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="edit_student.php?sap_id=<?php echo $row['t_id']; ?>">Edit</a></button></td>
+                                        <td> <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="edit_assign.php?t_id=<?php echo $row['t_id']; ?>">Edit</a></button></td>
                                         <td> <button type="button" class="btn btn-danger"> <a style="color: white; text-decoration: none;" onclick="return confirm('Are you sure, you want to delete?')" href="delete_assign.php?t_id=<?php echo $row['t_id']; ?>">Delete</a></td>
                                     </tr>
                                     <?php

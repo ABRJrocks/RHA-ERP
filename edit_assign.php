@@ -1,4 +1,18 @@
-<?php include 'connection.php' ?>
+<?php 
+include 'connection.php';
+session_start();
+$id = $_GET['t_id'];
+$select = "SELECT * FROM assign_course WHERE t_id=$id";
+$data = mysqli_query($conn, $select) or die( mysqli_error($conn));
+$row = mysqli_fetch_array($data);
+$query2 ="SELECT * FROM course";
+$data2 = mysqli_query($conn, $query2) or die( mysqli_error($conn));
+$res = mysqli_num_rows($data2);
+$query1 = "SELECT * FROM course c INNER JOIN assign_course ac WHERE ac.c_id=c.c_id";
+$data1 = mysqli_query($conn, $query1) or die( mysqli_error($conn));
+$res2= mysqli_fetch_array($data1);
+if($_SESSION["fname"]) { 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>All Teachers Assigned Courses</title>
+    <title>Edit Teacher Assign</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -17,7 +31,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">RHA Solutions</a>
+        <a class="navbar-brand ps-3" href="index.php">RHA Solutions</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -28,7 +42,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -39,7 +53,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Home</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -71,80 +85,70 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    Admin
+                    <?php echo $_SESSION["fname"];?>
                 </div>
             </nav>
         </div>
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <!-- Search Bar -->
-                    <form action="Teacher_Search.php" method="GET" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                        <div style="margin-bottom: 20px;" class="input-group">
-                            <input class="form-control" name="search" value="" type="number" placeholder="Enter Teacher ID" />
-                            <button class="btn btn-primary" id="std-search" type="submit"> <i class="fas fa-search"></i></button>
+                    <!--form-->
+                     <div class="row justify-content-center my-5">
+          <div class="col-lg-6">
+          <div class="text-center">
+                                <h2 style="color: rgb(79, 10, 241);">Edit Teacher Assigned Course</h2>
+                            </div>
+            <form action="" method="POST">
+              <div class="form-floating my-5">
+                <input name="name" type="name" id="name" placeholder="e.g. Hasnain Sajid" value="<?php echo $row['t_name']?>" class="form-control" />
+                <label for="name" class="form-label">Full Name</label>
+              </div>
+
+              <label for="course" class="form-label">Course</label>
+              <select name="c_id" id="course"  class="form-select" style="margin-bottom: 20px;" value="<?php echo $res2['c_name']?>">
+                <?php
+                if ($res) {
+                  while ($res = mysqli_fetch_array($data1)) {
+                    $course_name = $res['c_name'];
+                    $course_id = $res['c_id'];
+                    echo '<option value="' . $course_id . ' ">' . $course_name . '</option>';
+                  }
+                }
+                ?>
+              </select>
+
+              <label for="num_of_lec" class="form=label">Number of Lectures</label>
+              <select name="c_num" id="num_of_lec" class="form-select" value="<?php echo $row['c_num'] ?>">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+              <br>
+              <button name="update-btn" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Register</button>
+              <a href="index.html" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
+            </form>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; RHA Solutions 2022</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
                         </div>
-                    </form>
-                    <table class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Teacher ID</th>
-                                <th scope="col">Teacher Name</th>
-                                <th scope="col">Assigned Course</th>
-                                <th scope="col">No. Of Lectures</th>
-                                <th scope="col" colspan="2">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <!-- PHP CODE -->
-                            <?php
-                            $query = "SELECT ac.t_id, ac.t_name, c.c_name, ac.c_num FROM  assign_course ac INNER JOIN course c WHERE ac.c_id=c.c_id";
-                            $data = mysqli_query($conn, $query);
-                            $res = mysqli_num_rows($data);
-                            if ($res) {
-                                while ($row = mysqli_fetch_array($data)) {
-                            ?>
-                                    <tr>
-                                        <th scope="row"><?php echo $row['t_id']; ?></th>
-                                        <td><?php echo $row['t_name']; ?></td>
-                                        <td><?php echo $row['c_name']; ?></td>
-                                        <td><?php echo $row['c_num']; ?></td>
-                                        <td> <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="edit_assign.php?t_id=<?php echo $row['t_id']; ?>">Edit</a></button></td>
-                                        <td> <button type="button" class="btn btn-danger"> <a style="color: white; text-decoration: none;" onclick="return confirm('Are you sure, you want to delete?')" href="delete_assign.php?t_id=<?php echo $row['t_id']; ?>">Delete</a></td>
-                                    </tr>
-                                <?php
-                                }
-                            } else {
-                                ?>
-                                <tr>
-                                    <td>No Data Found</td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+                    </div>
                 </div>
+            </footer>
         </div>
     </div>
-
-    </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <br>
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; RHA Solutions 2022</div>
-                <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    </div>
-    </div>
+    <?php 
+}
+else {
+    ?><h1>Please Login to continue.Press <a href="login.php">Here<a></h1><?php
+}
+ ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -155,3 +159,29 @@
 </body>
 
 </html>
+
+
+<?php
+if (isset($_POST['update-btn'])) {
+    $fname = $_POST['t_name'];
+    $course = $_POST['c_id'];
+    $lectures = $_POST['lectures'];
+    $update = "UPDATE assign_course SET t_name='$fname', c_id='$course', c_num='$lectures' WHERE t_id=$id";
+    $data = mysqli_query($conn, $update);
+    if ($data) {
+?>
+        <script>
+            alert("Data Updated")
+            window.open("http://localhost/rha-erp/student_list.php", "_self")
+        </script>
+    <?php
+    } else {
+    ?>
+        <script>
+            alert("Please Try Again")
+            window.open("http://localhost/rha-erp/student_list.php", "_self")
+        </script>
+<?php
+    }
+}
+?>
