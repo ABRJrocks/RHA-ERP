@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2022 at 11:59 PM
+-- Generation Time: Jul 15, 2022 at 08:38 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -39,8 +39,6 @@ CREATE TABLE `assign_course` (
 --
 
 INSERT INTO `assign_course` (`t_id`, `t_name`, `c_id`, `c_num`) VALUES
-(1, 'Abdul Rafay', 0, 3),
-(18, 'Abdul Rafay', 0, 2),
 (19, 'Abdul Rafay', 2, 3),
 (20, 'Husnain', 1, 2),
 (21, 'Abdul Rafay', 0, 3),
@@ -48,7 +46,8 @@ INSERT INTO `assign_course` (`t_id`, `t_name`, `c_id`, `c_num`) VALUES
 (23, 'Ahmad Raza', 2, 1),
 (24, 'Shahzad', 2, 3),
 (25, 'Abdul Rafay', 2, 1),
-(26, 'Niaz', 1, 4);
+(26, 'Niaz', 1, 4),
+(27, '', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -110,7 +109,8 @@ CREATE TABLE `register` (
 INSERT INTO `register` (`fname`, `lname`, `email`, `pass`) VALUES
 ('Ahmad', 'Raza', 'ahmadraza16042002@gmail.com', 'aaa'),
 ('Abdul', 'Rafay', 'ahmadraza16042002@gmail.com', 'aaaaa'),
-('Abdul', 'Rafay', 'ahmadraza16042002@gmail.com', 'aaaaa');
+('Abdul', 'Rafay', 'ahmadraza16042002@gmail.com', 'aaaaa'),
+('Ahmad', 'Raza', 'ahmadraza16042002@gmail.com', '12345678');
 
 -- --------------------------------------------------------
 
@@ -201,7 +201,7 @@ ALTER TABLE `std_enroll_course`
 -- AUTO_INCREMENT for table `assign_course`
 --
 ALTER TABLE `assign_course`
-  MODIFY `t_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `t_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `course`
