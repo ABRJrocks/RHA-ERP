@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 15, 2022 at 08:38 AM
+-- Generation Time: Jul 16, 2022 at 12:54 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -39,15 +39,24 @@ CREATE TABLE `assign_course` (
 --
 
 INSERT INTO `assign_course` (`t_id`, `t_name`, `c_id`, `c_num`) VALUES
+(0, 'Ahmad Ali', 2, 3),
 (19, 'Abdul Rafay', 2, 3),
-(20, 'Husnain', 1, 2),
+(20, 'Hasnain Sajid', 5, 4),
 (21, 'Abdul Rafay', 0, 3),
 (22, 'Ahmad Raza', 2, 1),
 (23, 'Ahmad Raza', 2, 1),
 (24, 'Shahzad', 2, 3),
 (25, 'Abdul Rafay', 2, 1),
 (26, 'Niaz', 1, 4),
-(27, '', 1, 3);
+(27, '', 1, 3),
+(28, 'Niaz Ahmad', 20, 4),
+(12902, '', 2, 4),
+(12903, '', 3, 3),
+(20202, '', 2, 3),
+(21423, '', 5, 4),
+(32423, '', 2, 3),
+(74328, '', 2, 2),
+(432231, '', 3, 4);
 
 -- --------------------------------------------------------
 
@@ -88,6 +97,29 @@ INSERT INTO `course` (`c_id`, `c_name`, `crh`, `semester`) VALUES
 (19, 'English Composition', 3, 1),
 (20, 'DLD', 3, 2),
 (21, 'IHS', 3, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post`
+--
+
+CREATE TABLE `post` (
+  `p_id` int(10) NOT NULL,
+  `p_name` varchar(50) NOT NULL,
+  `p_sal` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`p_id`, `p_name`, `p_sal`) VALUES
+(0, 'None', 0),
+(1, 'Assistant Lecturar', 40000),
+(2, 'Junior Lecturar', 60000),
+(3, 'Lab Attendent', 45000),
+(4, 'Senior Lecturar', 90000);
 
 -- --------------------------------------------------------
 
@@ -165,6 +197,28 @@ INSERT INTO `std_enroll_course` (`sap_id`, `std_name`, `crs1`, `crs2`, `crs3`, `
 (25603, 'Ahmad Raza', 0, 0, 0, 0, 0, 0, 4),
 (25606, 'Fahad Khan', 2, 1, 3, 0, 0, 0, 5);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teach`
+--
+
+CREATE TABLE `teach` (
+  `t_id` int(10) NOT NULL,
+  `f_name` varchar(100) NOT NULL,
+  `l_name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `p_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `teach`
+--
+
+INSERT INTO `teach` (`t_id`, `f_name`, `l_name`, `email`, `p_id`) VALUES
+(12902, 'Ahmed', 'Razaaaaa', 'ahmadraza47912344505@gmail.com', 3),
+(12903, 'Ahmad', 'Ali', 'ahmadraza16042002@gmail.com', 4);
+
 --
 -- Indexes for dumped tables
 --
@@ -182,6 +236,12 @@ ALTER TABLE `course`
   ADD PRIMARY KEY (`c_id`);
 
 --
+-- Indexes for table `post`
+--
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`p_id`);
+
+--
 -- Indexes for table `std`
 --
 ALTER TABLE `std`
@@ -194,14 +254,14 @@ ALTER TABLE `std_enroll_course`
   ADD PRIMARY KEY (`sr`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indexes for table `teach`
 --
+ALTER TABLE `teach`
+  ADD PRIMARY KEY (`t_id`);
 
 --
--- AUTO_INCREMENT for table `assign_course`
+-- AUTO_INCREMENT for dumped tables
 --
-ALTER TABLE `assign_course`
-  MODIFY `t_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `course`
@@ -220,6 +280,12 @@ ALTER TABLE `std`
 --
 ALTER TABLE `std_enroll_course`
   MODIFY `sr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `teach`
+--
+ALTER TABLE `teach`
+  MODIFY `t_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12904;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
