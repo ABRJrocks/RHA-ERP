@@ -1,10 +1,9 @@
 <?php include 'connection.php';
 session_start();
 $id = $_GET['t_id'];
-$select = "SELECT * FROM assign_course WHERE t_id=$id";
+$select = "SELECT * FROM teach WHERE t_id=$id";
 $data = mysqli_query($conn, $select) or die( mysqli_error($conn));
 $row1 = mysqli_fetch_array($data);
-
 if($_SESSION["fname"]) { 
 
 ?>
@@ -90,39 +89,64 @@ if($_SESSION["fname"]) {
                     <!--form-->
                     <div class="row justify-content-center my-5">
           <div class="col-lg-6">
-            <form action="" method="POST">
-              <div class="form-floating my-5">
-                <input name="name" type="name" id="name" placeholder="e.g. Hasnain Sajid" class="form-control"  value="<?php echo $row1['t_name']?>"/>
-                <label for="name" class="form-label">Full Name</label>
-              </div>
+          <div class="text-center">
+                                <h2 style="color: rgb(79, 10, 241);">Edit Teacher Registered Data</h2>
+                            </div>
+          <form action="" method="post">
+          <div class="form-floating my-5">
+            <input
+            value="<?php echo $row1['f_name']?>"
+            name="fname"
+              type="name"
+              id="fname"
+              placeholder="e.g. Muhammad"
+              class="form-control"
+            />
+            <label for="name" class="form-label">First Name:</label>
+          </div>
 
-              <label for="course" class="form-label">Course</label>
-              <select name="c_id" id="course" class="form-select" style="margin-bottom: 20px;">
+          <div class="form-floating my-5">
+            <input
+            value="<?php echo $row1['l_name']?>"
+            name="lname"
+              type="name"
+              class="form-control"
+              id="lname"
+              placeholder="e.g Ahmad"
+            />
+            <label  for="lname" class="form-label">Last Name:</label>
+          </div>
+          <div class="form-floating my-5">
+            <input
+            value="<?php echo $row1['email']?>"
+              name="email"
+              type="text"
+              class="form-control"
+              id="email-std"
+              placeholder="Example@rhaerp.com"
+            />
+            <label  name="email" class="form-label">Email</label>
+          </div>
+
+          <label for="post" class="form-label">Post</label>
+              <select name="p_id" id="post" class="form-select" style="margin-bottom: 20px;">
                 <?php
-                $query = "SELECT * FROM course";
-                $data1 = mysqli_query($conn,$query);
+                $query = "SELECT p_id, p_name FROM post";
+                $data1 = mysqli_query($conn, $query);
                 $res1 = mysqli_num_rows($data1);
                 if ($res1) {
                   while ($res1 = mysqli_fetch_array($data1)) {
-                    $course_name = $res1['c_name'];
-                    $course_id = $res1['c_id'];
-                    echo '<option value="' . $course_id . ' ">' . $course_name . '</option>';
+                    $post_name = $res1['p_name'];
+                    $post_id = $res1['p_id'];
+                    echo '<option value="' . $post_id . ' ">' . $post_name . '</option>';
                   }
                 }
                 ?>
               </select>
-
-              <label for="num_of_lec" class="form=label">Number of Lectures</label>
-              <select name="c_num" id="num_of_lec" class="form-select">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-              <br>
-              <button name="update-btn" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Update</button>
-              <a href="index.html" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
-            </form>
+            <br>
+            <button value="update-btn" name="update-btn" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Update</button>
+            <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
+        </form>
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -158,23 +182,24 @@ else {
 
 <?php
 if (isset($_POST['update-btn'])) {
-    $tname = $_POST['name'];
-    $course = $_POST['c_id'];
-    $lecture = $_POST['c_num'];
-    $update = "UPDATE assign_course SET t_name='$tname', c_id='$course', c_num='$lecture' WHERE t_id=$id";
-    $data = mysqli_query($conn, $update);
-    if ($data) {
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $post = $_POST['p_id'];
+    $update = "UPDATE teach SET f_name='$fname', l_name='$lname', email='$email', p_id='$post' WHERE t_id=$id";
+    $data3 = mysqli_query($conn, $update);
+    if ($data3) {
 ?>
         <script>
             alert("Data Updated")
-            window.open("http://localhost/rha-erp/teacher_list.php", "_self")
+            window.open("http://localhost/rha-erp/All_teach_list.php", "_self")
         </script>
     <?php
     } else {
     ?>
         <script>
             alert("Please Try Again")
-            window.open("http://localhost/rha-erp/teacher_list.php", "_self")
+            window.open("http://localhost/rha-erp/All_teach_list.php", "_self")
         </script>
 <?php
     }

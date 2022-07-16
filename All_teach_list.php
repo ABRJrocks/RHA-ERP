@@ -1,13 +1,4 @@
-<?php include 'connection.php';
-session_start();
-$id = $_GET['t_id'];
-$select = "SELECT * FROM assign_course WHERE t_id=$id";
-$data = mysqli_query($conn, $select) or die( mysqli_error($conn));
-$row1 = mysqli_fetch_array($data);
-
-if($_SESSION["fname"]) { 
-
-?>
+<?php include 'connection.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +8,7 @@ if($_SESSION["fname"]) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Edit Student Data</title>
+    <title>All Teachers list</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -26,7 +17,7 @@ if($_SESSION["fname"]) {
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.php">RHA Solutions</a>
+        <a class="navbar-brand ps-3" href="index.html">RHA Solutions</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -37,7 +28,7 @@ if($_SESSION["fname"]) {
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                    <li><a class="dropdown-item" href="login.html">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -48,7 +39,7 @@ if($_SESSION["fname"]) {
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Home</div>
-                        <a class="nav-link" href="index.php">
+                        <a class="nav-link" href="index.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -80,70 +71,84 @@ if($_SESSION["fname"]) {
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <?php echo $_SESSION["fname"];?>
+                    Admin
                 </div>
             </nav>
         </div>
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <!--form-->
-                    <div class="row justify-content-center my-5">
-          <div class="col-lg-6">
-            <form action="" method="POST">
-              <div class="form-floating my-5">
-                <input name="name" type="name" id="name" placeholder="e.g. Hasnain Sajid" class="form-control"  value="<?php echo $row1['t_name']?>"/>
-                <label for="name" class="form-label">Full Name</label>
-              </div>
-
-              <label for="course" class="form-label">Course</label>
-              <select name="c_id" id="course" class="form-select" style="margin-bottom: 20px;">
-                <?php
-                $query = "SELECT * FROM course";
-                $data1 = mysqli_query($conn,$query);
-                $res1 = mysqli_num_rows($data1);
-                if ($res1) {
-                  while ($res1 = mysqli_fetch_array($data1)) {
-                    $course_name = $res1['c_name'];
-                    $course_id = $res1['c_id'];
-                    echo '<option value="' . $course_id . ' ">' . $course_name . '</option>';
-                  }
-                }
-                ?>
-              </select>
-
-              <label for="num_of_lec" class="form=label">Number of Lectures</label>
-              <select name="c_num" id="num_of_lec" class="form-select">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-              <br>
-              <button name="update-btn" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Update</button>
-              <a href="index.html" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
-            </form>
-            </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; RHA Solutions 2022</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
+                    <!-- Search Bar -->
+                    <form action="All_teach_search.php" method="GET" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                        <div style="margin-bottom: 20px;" class="input-group">
+                            <input class="form-control" name="search" value="" type="number" placeholder="Enter Teacher ID" />
+                            <button class="btn btn-primary" id="std-search" type="submit"> <i class="fas fa-search"></i></button>
                         </div>
-                    </div>
+                    </form>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Teacher ID</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Post</th>
+                                <th scope="col">Salary</th>
+                                <th scope="col" colspan="2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <!-- PHP CODE -->
+                            <?php
+                            $query = "SELECT t.t_id, t.f_name, t.l_name, t.email, p.p_name, p.p_sal FROM  teach t INNER JOIN post p WHERE t.p_id=p.p_id";
+                            $data = mysqli_query($conn, $query);
+                            $res = mysqli_num_rows($data);
+                            if ($res) {
+                                while ($row = mysqli_fetch_array($data)) {
+                            ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $row['t_id']; ?></th>
+                                        <td><?php echo $row['f_name']; ?></td>
+                                        <td><?php echo $row['l_name']; ?></td>
+                                        <td><?php echo $row['email']; ?></td>
+                                        <td><?php echo $row['p_name']; ?></td>
+                                        <td><?php echo $row['p_sal']; ?></td>
+                                        <td> <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="edit_teacher.php?t_id=<?php echo $row['t_id']; ?>">Edit</a></button></td>
+                                        <td> <button type="button" class="btn btn-danger"> <a style="color: white; text-decoration: none;" onclick="return confirm('Are you sure, you want to delete?')" href="delete_teach.php?t_id=<?php echo $row['t_id']; ?>">Delete</a></td>
+                                    </tr>
+                                <?php
+                                }
+                            } else {
+                                ?>
+                                <tr>
+                                    <td>No Data Found</td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
-            </footer>
         </div>
     </div>
-    <?php 
-}
-else {
-    ?><h1>Please Login to continue.Press <a href="login.php">Here<a></h1><?php
-}
- ?>
+
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <br>
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; RHA Solutions 2022</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -154,29 +159,3 @@ else {
 </body>
 
 </html>
-
-
-<?php
-if (isset($_POST['update-btn'])) {
-    $tname = $_POST['name'];
-    $course = $_POST['c_id'];
-    $lecture = $_POST['c_num'];
-    $update = "UPDATE assign_course SET t_name='$tname', c_id='$course', c_num='$lecture' WHERE t_id=$id";
-    $data = mysqli_query($conn, $update);
-    if ($data) {
-?>
-        <script>
-            alert("Data Updated")
-            window.open("http://localhost/rha-erp/teacher_list.php", "_self")
-        </script>
-    <?php
-    } else {
-    ?>
-        <script>
-            alert("Please Try Again")
-            window.open("http://localhost/rha-erp/teacher_list.php", "_self")
-        </script>
-<?php
-    }
-}
-?>

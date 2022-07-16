@@ -2,7 +2,7 @@
 include 'connection.php';
 session_start();
 if($_SESSION["fname"]) { 
-$query = "SELECT c_id, c_name from course";
+$query = "SELECT p_id, p_name, from post";
 $data = mysqli_query($conn, $query);
 $res = mysqli_num_rows($data);
 ?>
@@ -88,7 +88,7 @@ $res = mysqli_num_rows($data);
     <div id="layoutSidenav_content">
       <main>
         <div class="text-center">
-          <h2 style="color: rgb(79, 10, 241);">Register Students</h2>
+          <h2 style="color: rgb(79, 10, 241);">Register Teachers</h2>
         </div>
         <!--form-->
         <div class="row justify-content-center my-5">
@@ -96,9 +96,9 @@ $res = mysqli_num_rows($data);
           <form action="" method="post">
           <div class="form-floating my-5">
             <input
-            name="name"
+            name="fname"
               type="name"
-              id="name"
+              id="fname"
               placeholder="e.g. Muhammad"
               class="form-control"
             />
@@ -107,13 +107,13 @@ $res = mysqli_num_rows($data);
 
           <div class="form-floating my-5">
             <input
-            name="St_lname"
+            name="lname"
               type="name"
               class="form-control"
-              id="St_lname"
+              id="lname"
               placeholder="e.g Ahmad"
             />
-            <label  for="St_lname" class="form-label">Last Name:</label>
+            <label  for="lname" class="form-label">Last Name:</label>
           </div>
           <div class="form-floating my-5">
             <input
@@ -126,17 +126,18 @@ $res = mysqli_num_rows($data);
             <label  name="email" class="form-label">Email</label>
           </div>
 
-          <label name="Semester" for="Semester" class="form=label">Semester</label>
-            <select name="Semester" id="Semester" class="form-select">
-              <option value="1">1st</option>
-              <option value="2">2nd</option>
-              <option value="3">3rd</option>
-              <option value="4">4th</option>
-              <option value="5">5th</option>
-              <option value="6">6th</option>
-              <option value="7">7th</option>
-              <option value="8">8th</option>
-            </select>
+          <label for="post" class="form-label">Post</label>
+              <select name="p_id" id="post" class="form-select" style="margin-bottom: 20px;">
+                <?php
+                if ($res) {
+                  while ($res = mysqli_fetch_array($data)) {
+                    $post_name = $res['p_name'];
+                    $post_id = $res['p_id'];
+                    echo '<option value="' . $post_id . ' ">' . $post_name . '</option>';
+                  }
+                }
+                ?>
+              </select>
             <br>
             <button value="register" name="register" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Register</button>
             <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
@@ -170,24 +171,22 @@ else {
   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
   <script src="js/datatables-simple-demo.js"></script>
 </body>
-
 </html>
-
 <?php
-$fname = $_POST['name'];
-$St_lname = $_POST['St_lname'];
-$Semester = $_POST['Semester'];
+$fname = $_POST['fname'];
+$lname = $_POST['lname'];
+$post = $_POST['p_id'];
 $email = $_POST['email'];
 
-$sql = "INSERT INTO std (fname, lname, semester, email) VALUES ('$fname', '$St_lname', '$Semester', '$email')";
+$sql = "INSERT INTO teach (f_name, l_name, email,p_id) VALUES ('$fname', '$lname', '$email', '$post')";
 
 if(isset($_POST["register"])){
     if(mysqli_query($conn,$sql))
     {
         ?>   
         <script>
-        alert("Data Inserted!")
-        window.open("http://localhost/rha-erp/st_register.html","_self")
+        alert("Teacher Registered!")
+        window.open("http://localhost/rha-erp/teach_register.php","_self")
 
     </script>
         <?php
@@ -196,8 +195,8 @@ if(isset($_POST["register"])){
     {
         ?>   
         <script>
-        alert("Data Inserted!")
-        window.open("http://localhost/rha-erp/st_register.php","_self")
+        alert("Teacher Not Registered Due to Error Try Again!")
+        window.open("http://localhost/rha-erp/teach_register.php","_self")
 
     </script>
         <?php

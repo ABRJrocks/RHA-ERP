@@ -27,4 +27,5 @@ if(isset($_POST["register"])){
         <?php
     }
 }
+
 ?>
