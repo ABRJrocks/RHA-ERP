@@ -1,3 +1,9 @@
+<?php
+include 'connection.php';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +22,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">RHA Solutions</a>
+        <a class="navbar-brand ps-3" href="index.php">RHA Solutions</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -40,7 +46,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Home</div>
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -156,7 +162,7 @@
       </tr>
     </table>
   </div>
-  
+=
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">

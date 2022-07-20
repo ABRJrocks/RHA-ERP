@@ -88,17 +88,31 @@ $res = mysqli_num_rows($data);
     <div id="layoutSidenav_content">
       <main>
         <div class="text-center">
-          <h2 style="color: rgb(79, 10, 241);">Assign Course</h2>
+          <h2 style="color: rgb(79, 10, 241);">Assign Course to Slot</h2>
         </div>
         <!--form-->
         <div class="row justify-content-center my-5">
           <div class="col-lg-6">
-            <form action="assigcrs.php" method="POST">
-              <div class="form-floating my-5">
-                <input name="name" type="name" id="name" placeholder="e.g. Hasnain Sajid" class="form-control" />
-                <label for="name" class="form-label">Full Name</label>
-              </div>
+            <form action="create_tt.php" method="POST">
+              
+                <label for="Day" class="form=label">Select Day </label>
+                <select name="day" id="day" class="form-select">
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednsday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                </select>
 
+                <label for="timeslot" class="form=label">Select Timeslot</label>
+                <select name="timeslot" id="timeslot" class="form-select">
+                  <option value="1">8:00 - 9:30</option>
+                  <option value="2">9:30 - 11:00</option>
+                  <option value="3">11:00 - 12:30</option>
+                  <option value="4">1:00 - 2:30</option>
+                  <option value="5">2:30 - 4:00</option>
+                  <option value="6">4:00 - 5:30</option>
+                </select>
               <label for="course" class="form-label">Course</label>
               <select name="c_id" id="course" class="form-select" style="margin-bottom: 20px;">
                 <?php
@@ -111,14 +125,15 @@ $res = mysqli_num_rows($data);
                 }
                 ?>
               </select>
-
-              <label for="num_of_lec" class="form=label">Number of Lectures</label>
-              <select name="c_num" id="num_of_lec" class="form-select">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
+              <label for="room" class="form=label">Select Room No.</label>
+                <select name="timeslot" id="timeslot" class="form-select">
+                  <option value="201">201</option>
+                  <option value="202">202</option>
+                  <option value="203">203</option>
+                  <option value="204">204</option>
+                  <option value="205">205</option>
+                  <option value="206">206</option>
+                </select>
               <br>
               <button name="register" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Register</button>
               <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
