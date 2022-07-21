@@ -126,7 +126,7 @@ $res = mysqli_num_rows($data);
                 ?>
               </select>
               <label for="room" class="form=label">Select Room No.</label>
-                <select name="timeslot" id="timeslot" class="form-select">
+                <select name="room" id="room" class="form-select">
                   <option value="201">201</option>
                   <option value="202">202</option>
                   <option value="203">203</option>
