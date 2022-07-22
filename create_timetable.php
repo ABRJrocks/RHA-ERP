@@ -97,6 +97,7 @@ $res = mysqli_num_rows($data);
               
                 <label for="Day" class="form=label">Select Day </label>
                 <select name="day" id="day" class="form-select">
+                <option disabled selected value> -- Select Day -- </option>
                   <option value="Monday">Monday</option>
                   <option value="Tuesday">Tuesday</option>
                   <option value="Wednsday">Wednesday</option>
@@ -106,6 +107,7 @@ $res = mysqli_num_rows($data);
 
                 <label for="timeslot" class="form=label">Select Timeslot</label>
                 <select name="timeslot" id="timeslot" class="form-select">
+                <option disabled selected value> -- Select Timeslot -- </option>
                   <option value="1">8:00 - 9:30</option>
                   <option value="2">9:30 - 11:00</option>
                   <option value="3">11:00 - 12:30</option>
@@ -115,6 +117,7 @@ $res = mysqli_num_rows($data);
                 </select>
               <label for="course" class="form-label">Course</label>
               <select name="c_id" id="course" class="form-select" style="margin-bottom: 20px;">
+              <option disabled selected value> -- Select Course -- </option>
                 <?php
                 if ($res) {
                   while ($res = mysqli_fetch_array($data)) {
@@ -125,8 +128,22 @@ $res = mysqli_num_rows($data);
                 }
                 ?>
               </select>
+              <label for="teacher" class="form-label">Select Teacher</label>
+              <select name="teacher" id="teacher" class="form-select" style="margin-bottom: 20px;">
+              <option disabled selected value> -- Select Teacher -- </option>
+                <?php
+                $query2 = "SELECT t_id, t_name,c_id From assign_course ";
+                $sql = mysqli_query($conn , $query2);
+                  while ($res = mysqli_fetch_array($sql)) {
+                    $t_name = $res['t_name'];
+                    $t_id = $res['t_id'];
+                    echo '<option value="' . $t_id . ' ">' . $t_name . '</option>';
+                  }
+                ?>
+              </select>
               <label for="room" class="form=label">Select Room No.</label>
                 <select name="room" id="room" class="form-select">
+                <option disabled selected value> -- Select Room -- </option>
                   <option value="201">201</option>
                   <option value="202">202</option>
                   <option value="203">203</option>

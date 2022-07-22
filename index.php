@@ -96,7 +96,7 @@ if($_SESSION["fname"]) {
                                     <h5 class="card-title">Time Table</h5>
                                     <p class="card-text">Click on the button below to draw a time table according to
                                         your need.</p>
-                                    <a href="timetable.html" class="btn btn-primary">Continue</a>
+                                    <a href="create_timetable.php" class="btn btn-primary">Continue</a>
                                 </div>
                             </div>
                         </div>

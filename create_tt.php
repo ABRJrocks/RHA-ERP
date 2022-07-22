@@ -5,8 +5,9 @@ $day = $_POST['day'];
 $c_id = $_POST['c_id'];
 $timeslot = $_POST['timeslot'];
 $room = $_POST['room'];
+$teacher = $_POST['teacher'];
 
-$sql = "INSERT INTO timetable (day,Timeslot,room, c_id) VALUES ('$day', '$timeslot','$room', '$c_id')";
+$sql = "INSERT INTO timetable (day,Timeslot,room, c_id,t_id) VALUES ('$day', '$timeslot','$room', '$c_id',$teacher)";
 
 if(isset($_POST["register"])){
     if(mysqli_query($conn,$sql))
