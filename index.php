@@ -105,10 +105,10 @@ if($_SESSION["fname"]) {
                             <div class="card" style="width: 18rem;">
                                 <img src="assets/2nd.jpg" style="height: 193px;" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">DateSheet</h5>
+                                    <h5 class="card-title">Teachers List</h5>
                                     <p class="card-text">Click on the button below to make datesheet of different exams.
                                     </p>
-                                    <a href="datesheet.html" class="btn btn-primary">continue</a>
+                                    <a href="teacher_list.php" class="btn btn-primary">continue</a>
                                 </div>
                             </div>
                         </div>
