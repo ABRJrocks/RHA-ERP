@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2022 at 12:54 PM
+-- Generation Time: Jul 23, 2022 at 01:25 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -44,19 +44,10 @@ INSERT INTO `assign_course` (`t_id`, `t_name`, `c_id`, `c_num`) VALUES
 (20, 'Hasnain Sajid', 5, 4),
 (21, 'Abdul Rafay', 0, 3),
 (22, 'Ahmad Raza', 2, 1),
-(23, 'Ahmad Raza', 2, 1),
 (24, 'Shahzad', 2, 3),
-(25, 'Abdul Rafay', 2, 1),
+(25, 'Abdul Rafay', 13, 1),
 (26, 'Niaz', 1, 4),
-(27, '', 1, 3),
-(28, 'Niaz Ahmad', 20, 4),
-(12902, '', 2, 4),
-(12903, '', 3, 3),
-(20202, '', 2, 3),
-(21423, '', 5, 4),
-(32423, '', 2, 3),
-(74328, '', 2, 2),
-(432231, '', 3, 4);
+(28, 'Niaz Ahmad', 20, 4);
 
 -- --------------------------------------------------------
 
@@ -142,7 +133,8 @@ INSERT INTO `register` (`fname`, `lname`, `email`, `pass`) VALUES
 ('Ahmad', 'Raza', 'ahmadraza16042002@gmail.com', 'aaa'),
 ('Abdul', 'Rafay', 'ahmadraza16042002@gmail.com', 'aaaaa'),
 ('Abdul', 'Rafay', 'ahmadraza16042002@gmail.com', 'aaaaa'),
-('Ahmad', 'Raza', 'ahmadraza16042002@gmail.com', '12345678');
+('Ahmad', 'Raza', 'ahmadraza16042002@gmail.com', '12345678'),
+('Hasnain', 'Sajid', 'hasajid882@gmail.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -219,6 +211,28 @@ INSERT INTO `teach` (`t_id`, `f_name`, `l_name`, `email`, `p_id`) VALUES
 (12902, 'Ahmed', 'Razaaaaa', 'ahmadraza47912344505@gmail.com', 3),
 (12903, 'Ahmad', 'Ali', 'ahmadraza16042002@gmail.com', 4);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timetable`
+--
+
+CREATE TABLE `timetable` (
+  `day` varchar(30) NOT NULL,
+  `Timeslot` int(30) NOT NULL,
+  `room` int(11) NOT NULL,
+  `c_id` int(11) NOT NULL,
+  `t_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `timetable`
+--
+
+INSERT INTO `timetable` (`day`, `Timeslot`, `room`, `c_id`, `t_id`) VALUES
+('Monday', 1, 201, 1, 26),
+('Monday', 2, 203, 2, 19);
+
 --
 -- Indexes for dumped tables
 --
@@ -260,6 +274,13 @@ ALTER TABLE `teach`
   ADD PRIMARY KEY (`t_id`);
 
 --
+-- Indexes for table `timetable`
+--
+ALTER TABLE `timetable`
+  ADD KEY `fk_c_id` (`c_id`),
+  ADD KEY `fk_t_id` (`t_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -286,6 +307,17 @@ ALTER TABLE `std_enroll_course`
 --
 ALTER TABLE `teach`
   MODIFY `t_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12904;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `timetable`
+--
+ALTER TABLE `timetable`
+  ADD CONSTRAINT `fk_c_id` FOREIGN KEY (`c_id`) REFERENCES `course` (`c_id`),
+  ADD CONSTRAINT `fk_t_id` FOREIGN KEY (`t_id`) REFERENCES `assign_course` (`t_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
