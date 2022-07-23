@@ -100,15 +100,21 @@
 
                             <!-- PHP CODE -->
                             <?php
-                            $query = "SELECT ac.t_id, ac.t_name, c.c_name, ac.c_num FROM  assign_course ac INNER JOIN course c WHERE ac.c_id=c.c_id";
-                            $data = mysqli_query($conn, $query);
+                            $query = "SELECT t.t_id, t.f_name, t.l_name, c.c_name, ac.c_num
+                            FROM(teach t
+                        INNER JOIN assign_course ac ON t.t_id = ac.t_id
+                        INNER JOIN course c ON ac.c_id = c.c_id )";
+                            $data = mysqli_query($conn, $query) or die(mysqli_error($conn));
                             $res = mysqli_num_rows($data);
                             if ($res) {
                                 while ($row = mysqli_fetch_array($data)) {
+                                    $name = $row['f_name'];
+                                    $name .= " ";
+                                    $name .= $row['l_name'];
                             ?>
                                     <tr>
                                         <th scope="row"><?php echo $row['t_id']; ?></th>
-                                        <td><?php echo $row['t_name']; ?></td>
+                                        <td><?php echo $name; ?></td>
                                         <td><?php echo $row['c_name']; ?></td>
                                         <td><?php echo $row['c_num']; ?></td>
                                         <td> <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="edit_assign.php?t_id=<?php echo $row['t_id']; ?>">Edit</a></button></td>

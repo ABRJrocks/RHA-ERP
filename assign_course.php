@@ -94,14 +94,20 @@ $res = mysqli_num_rows($data);
         <div class="row justify-content-center my-5">
           <div class="col-lg-6">
             <form action="assigcrs.php" method="POST">
-            <label for="course" class="form-label">Course</label>
-              <select name="c_id" id="course" class="form-select" style="margin-bottom: 20px;">
+            <label for="teacher" class="form-label">Teachers</label>
+              <select name="t_id" id="teacher" class="form-select" style="margin-bottom: 20px;">
+              <option disabled selected value> -- Select Teacher -- </option>
                 <?php
-                if ($res) {
-                  while ($res = mysqli_fetch_array($data)) {
-                    $course_name = $res['c_name'];
-                    $course_id = $res['c_id'];
-                    echo '<option value="' . $course_id . ' ">' . $course_name . '</option>';
+                  $teacher_query = "SELECT f_name, l_name, t_id FROM teach";
+                  $data2 = mysqli_query($conn, $teacher_query);
+                  $rows = mysqli_num_rows($data2);
+                if ($rows) {
+                  while ($res2 = mysqli_fetch_array($data2)) {
+                    $name = $res2['f_name'];
+                    $name .= " ";
+                    $name .= $res2['l_name'];
+                    
+                    echo '<option value="' . $res2['t_id'] . ' ">' . $name . '</option>';
                   }
                 }
                 ?>
@@ -109,6 +115,7 @@ $res = mysqli_num_rows($data);
 
               <label for="course" class="form-label">Course</label>
               <select name="c_id" id="course" class="form-select" style="margin-bottom: 20px;">
+              <option disabled selected value> -- Select Course -- </option>
                 <?php
                 if ($res) {
                   while ($res = mysqli_fetch_array($data)) {

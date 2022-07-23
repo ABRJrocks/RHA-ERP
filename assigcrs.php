@@ -1,11 +1,11 @@
 <?php
 
 require ('connection.php');
-$name = $_POST['name'];
 $c_id = $_POST['c_id'];
 $c_num = $_POST['c_num'];
+$t_id = $_POST['t_id'];
 
-$sql = "INSERT INTO assign_course (t_name, c_id,  c_num) VALUES ('$name', '$c_id', '$c_num')";
+$sql = "INSERT INTO assign_course (t_id, c_id,  c_num) VALUES ('$t_id', '$c_id', '$c_num')";
 
 if(isset($_POST["register"])){
     if(mysqli_query($conn,$sql))

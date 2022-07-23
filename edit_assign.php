@@ -1,7 +1,7 @@
 <?php include 'connection.php';
 session_start();
 $id = $_GET['t_id'];
-$select = "SELECT * FROM assign_course WHERE t_id=$id";
+$select = "SELECT CONCAT(f_name, ' ', l_name) AS name  FROM teach WHERE t_id=$id";
 $data = mysqli_query($conn, $select) or die( mysqli_error($conn));
 $row1 = mysqli_fetch_array($data);
 
@@ -92,12 +92,13 @@ if($_SESSION["fname"]) {
           <div class="col-lg-6">
             <form action="" method="POST">
               <div class="form-floating my-5">
-                <input name="name" type="name" id="name" placeholder="e.g. Hasnain Sajid" class="form-control"  value="<?php echo $row1['t_name']?>"/>
+                <input disabled name="name" type="name" id="name" class="form-control"  value="<?php echo $row1['name']; ?>"/>
                 <label for="name" class="form-label">Full Name</label>
               </div>
 
               <label for="course" class="form-label">Course</label>
               <select name="c_id" id="course" class="form-select" style="margin-bottom: 20px;">
+              <option disabled selected value> -- Select Course -- </option>
                 <?php
                 $query = "SELECT * FROM course";
                 $data1 = mysqli_query($conn,$query);
@@ -158,10 +159,9 @@ else {
 
 <?php
 if (isset($_POST['update-btn'])) {
-    $tname = $_POST['name'];
     $course = $_POST['c_id'];
     $lecture = $_POST['c_num'];
-    $update = "UPDATE assign_course SET t_name='$tname', c_id='$course', c_num='$lecture' WHERE t_id=$id";
+    $update = "UPDATE assign_course SET c_id='$course', c_num='$lecture' WHERE t_id=$id";
     $data = mysqli_query($conn, $update);
     if ($data) {
 ?>
