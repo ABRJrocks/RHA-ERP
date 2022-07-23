@@ -41,7 +41,7 @@ if ($_SESSION["fname"]) {
             <!-- form part 1 -->
 
             <div id="tt-form-part-1">
-              <form action="" method="POST">
+              <form action="" method="GET" name="formtt">
 
                 <label for="Day" class="form=label">Select Day </label>
                 <select name="day" id="day" class="form-select">
@@ -82,16 +82,20 @@ if ($_SESSION["fname"]) {
               </form>
             </div>
 
+
             <!-- 2nd Form -->
             <?php
-            if (isset($_POST['proceed'])) {
-
+            if (isset($_GET['proceed'])) {
             ?>
+            <Script>
+              document.getElementById("tt-form-part-1").style.display = "none";
+            </Script>
+            <form action="" method="POST" name="tt-form-part-2">
               <label for="teacher" class="form-label">Select Teacher</label>
               <select name="teacher" id="teacher" class="form-select" style="margin-bottom: 20px;">
                 <option disabled selected value> -- Select Teacher -- </option>
                 <?php
-                $cid = $_POST['c_id'];
+                $cid = $_GET['c_id'];
                 $query2 = "SELECT t.t_id, CONCAT(t.f_name, ' ', t.l_name) AS name From teach t INNER JOIN assign_course ac ON t.t_id = ac.t_id AND ac.c_id = $cid";
                 $sql = mysqli_query($conn, $query2);
                 while ($res = mysqli_fetch_array($sql)) {
@@ -112,7 +116,7 @@ if ($_SESSION["fname"]) {
                 <option value="206">206</option>
               </select>
               <br>
-              <button name="register" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Register</button>
+              <button type="submit" name="register" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Register</button>
               <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
               </form>
             <?php
@@ -153,9 +157,9 @@ if ($_SESSION["fname"]) {
   <?php
 
   require('connection.php');
-  $day = $_POST['day'];
-  $c_id = $_POST['c_id'];
-  $timeslot = $_POST['timeslot'];
+  $day = $_GET['day'];
+  $c_id = $_GET['c_id'];
+  $timeslot = $_GET['timeslot'];
   $room = $_POST['room'];
   $teacher = $_POST['teacher'];
 
