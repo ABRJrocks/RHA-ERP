@@ -1,4 +1,5 @@
 <?php require 'connection.php';
+error_reporting (0);
 $id = $_GET['sap_id'];
 $select = "SELECT fname, lname FROM std where sap_id = $id;";
 $data = mysqli_query($conn, $select) or die(mysqli_error($conn));

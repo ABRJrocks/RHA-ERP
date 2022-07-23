@@ -1,9 +1,10 @@
 <?php
+error_reporting (0);
 include 'connection.php';
 session_start();
 if($_SESSION["fname"]) { 
-$query = "SELECT p_id, p_name, from post";
-$data = mysqli_query($conn, $query);
+$query = "SELECT p_id, p_name FROM post";
+$data = mysqli_query($conn, $query)  or die(mysqli_error($conn));
 $res = mysqli_num_rows($data);
 ?>
 
@@ -69,6 +70,7 @@ $res = mysqli_num_rows($data);
 
           <label for="post" class="form-label">Post</label>
               <select name="p_id" id="post" class="form-select" style="margin-bottom: 20px;">
+              <option disabled selected value> -- Teacher Post -- </option>
                 <?php
                 if ($res) {
                   while ($res = mysqli_fetch_array($data)) {
