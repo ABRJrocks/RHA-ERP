@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2022 at 05:51 PM
+-- Generation Time: Jul 23, 2022 at 09:18 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -215,6 +215,13 @@ CREATE TABLE `timetable` (
   `c_id` int(11) NOT NULL,
   `t_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `timetable`
+--
+
+INSERT INTO `timetable` (`day`, `Timeslot`, `room`, `c_id`, `t_id`) VALUES
+('Monday', 1, 203, 13, 1);
 
 --
 -- Indexes for dumped tables
