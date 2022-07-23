@@ -35,10 +35,18 @@ $res = mysqli_num_rows($data);
         <div class="row justify-content-center my-5">
           <div class="col-lg-6">
             <form action="assigcrs.php" method="POST">
-              <div class="form-floating my-5">
-                <input name="name" type="name" id="name" placeholder="e.g. Hasnain Sajid" class="form-control" />
-                <label for="name" class="form-label">Full Name</label>
-              </div>
+            <label for="course" class="form-label">Course</label>
+              <select name="c_id" id="course" class="form-select" style="margin-bottom: 20px;">
+                <?php
+                if ($res) {
+                  while ($res = mysqli_fetch_array($data)) {
+                    $course_name = $res['c_name'];
+                    $course_id = $res['c_id'];
+                    echo '<option value="' . $course_id . ' ">' . $course_name . '</option>';
+                  }
+                }
+                ?>
+              </select>
 
               <label for="course" class="form-label">Course</label>
               <select name="c_id" id="course" class="form-select" style="margin-bottom: 20px;">
