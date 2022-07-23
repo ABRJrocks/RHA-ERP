@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2022 at 01:25 PM
+-- Generation Time: Jul 23, 2022 at 05:51 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -28,9 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `assign_course` (
-  `t_id` int(3) NOT NULL,
-  `t_name` varchar(100) NOT NULL,
-  `c_id` int(3) NOT NULL,
+  `t_id` int(11) NOT NULL,
+  `c_id` int(11) NOT NULL,
   `c_num` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -38,16 +37,9 @@ CREATE TABLE `assign_course` (
 -- Dumping data for table `assign_course`
 --
 
-INSERT INTO `assign_course` (`t_id`, `t_name`, `c_id`, `c_num`) VALUES
-(0, 'Ahmad Ali', 2, 3),
-(19, 'Abdul Rafay', 2, 3),
-(20, 'Hasnain Sajid', 5, 4),
-(21, 'Abdul Rafay', 0, 3),
-(22, 'Ahmad Raza', 2, 1),
-(24, 'Shahzad', 2, 3),
-(25, 'Abdul Rafay', 13, 1),
-(26, 'Niaz', 1, 4),
-(28, 'Niaz Ahmad', 20, 4);
+INSERT INTO `assign_course` (`t_id`, `c_id`, `c_num`) VALUES
+(1, 1, 2),
+(1, 13, 1);
 
 -- --------------------------------------------------------
 
@@ -67,7 +59,6 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`c_id`, `c_name`, `crh`, `semester`) VALUES
-(0, 'None', 0, 0),
 (1, 'OOP', 3, 3),
 (2, 'Software Engineering', 3, 4),
 (3, 'DBS', 4, 4),
@@ -106,7 +97,6 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`p_id`, `p_name`, `p_sal`) VALUES
-(0, 'None', 0),
 (1, 'Assistant Lecturar', 40000),
 (2, 'Junior Lecturar', 60000),
 (3, 'Lab Attendent', 45000),
@@ -134,7 +124,8 @@ INSERT INTO `register` (`fname`, `lname`, `email`, `pass`) VALUES
 ('Abdul', 'Rafay', 'ahmadraza16042002@gmail.com', 'aaaaa'),
 ('Abdul', 'Rafay', 'ahmadraza16042002@gmail.com', 'aaaaa'),
 ('Ahmad', 'Raza', 'ahmadraza16042002@gmail.com', '12345678'),
-('Hasnain', 'Sajid', 'hasajid882@gmail.com', '1234');
+('Hasnain', 'Sajid', 'hasajid882@gmail.com', '1234'),
+('Abdul', 'Rafay', 'abdulrafeh380@gmail.com', 'admin');
 
 -- --------------------------------------------------------
 
@@ -196,7 +187,7 @@ INSERT INTO `std_enroll_course` (`sap_id`, `std_name`, `crs1`, `crs2`, `crs3`, `
 --
 
 CREATE TABLE `teach` (
-  `t_id` int(10) NOT NULL,
+  `t_id` int(11) NOT NULL,
   `f_name` varchar(100) NOT NULL,
   `l_name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -208,8 +199,8 @@ CREATE TABLE `teach` (
 --
 
 INSERT INTO `teach` (`t_id`, `f_name`, `l_name`, `email`, `p_id`) VALUES
-(12902, 'Ahmed', 'Razaaaaa', 'ahmadraza47912344505@gmail.com', 3),
-(12903, 'Ahmad', 'Ali', 'ahmadraza16042002@gmail.com', 4);
+(1, 'Zarmina', 'Jahangir', 'zjay@gmail.com', 4),
+(2, 'Ahmad', 'Arslan', 'arslan@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -226,14 +217,6 @@ CREATE TABLE `timetable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `timetable`
---
-
-INSERT INTO `timetable` (`day`, `Timeslot`, `room`, `c_id`, `t_id`) VALUES
-('Monday', 1, 201, 1, 26),
-('Monday', 2, 203, 2, 19);
-
---
 -- Indexes for dumped tables
 --
 
@@ -241,7 +224,7 @@ INSERT INTO `timetable` (`day`, `Timeslot`, `room`, `c_id`, `t_id`) VALUES
 -- Indexes for table `assign_course`
 --
 ALTER TABLE `assign_course`
-  ADD PRIMARY KEY (`t_id`);
+  ADD KEY `fk_teacher_id` (`t_id`);
 
 --
 -- Indexes for table `course`
@@ -306,18 +289,24 @@ ALTER TABLE `std_enroll_course`
 -- AUTO_INCREMENT for table `teach`
 --
 ALTER TABLE `teach`
-  MODIFY `t_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12904;
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `assign_course`
+--
+ALTER TABLE `assign_course`
+  ADD CONSTRAINT `fk_teacher_id` FOREIGN KEY (`t_id`) REFERENCES `teach` (`t_id`);
+
+--
 -- Constraints for table `timetable`
 --
 ALTER TABLE `timetable`
   ADD CONSTRAINT `fk_c_id` FOREIGN KEY (`c_id`) REFERENCES `course` (`c_id`),
-  ADD CONSTRAINT `fk_t_id` FOREIGN KEY (`t_id`) REFERENCES `assign_course` (`t_id`);
+  ADD CONSTRAINT `fk_t_id` FOREIGN KEY (`t_id`) REFERENCES `teach` (`t_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
