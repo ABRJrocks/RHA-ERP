@@ -1,4 +1,4 @@
-<?php include 'connection.php'
+<?php include 'connection.php';
 session_start();
 error_reporting(0);
 if($_SESSION["fname"]) {
