@@ -37,6 +37,35 @@ $sql = "INSERT INTO register (fname, lname, email, pass) VALUES ('$fname', '$lna
         <title>Register</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <script>  
+function validateform(){  
+var fname=document.myform.fname.value;
+var lname=document.myform.lname.value;
+var email=document.myform.fname.value;  
+var pass=document.myform.pass.value;  
+var cpass=document.myform.cpass.value;
+if (fname==null || fname==""){  
+  alert("Name can't be blank");  
+  return false;  
+}
+else if (lname==null || name==""){  
+  alert("Name can't be blank");  
+  return false;  
+}
+else if (email==null || email==""){  
+  alert("Please Enter Email");  
+  return false;  
+}
+else if(pass==null || pass==""){  
+  alert("Please Enter Password");  
+  return false;  
+  }  
+  else if(cpass==null || cpass=="" || cpass==pass){  
+  alert("Please Confirm Password");  
+  return false;  
+  }  
+}  
+</script>  
     </head>
     <body style="background-color:#34495e">
         <div id="layoutAuthentication">
@@ -48,36 +77,36 @@ $sql = "INSERT INTO register (fname, lname, email, pass) VALUES ('$fname', '$lna
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                                     <div class="card-body">
-                                        <form method="Post">
+                                        <form method="Post" name="myform"  onsubmit="return validateform()">
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="fname" id="fname" type="text" placeholder="Enter Your First Name" required/>
+                                                        <input class="form-control" name="fname" id="fname" type="text" placeholder="Enter Your First Name" />
                                                         <label for="fname">First name</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" name="lname" id="lname" type="text" placeholder="Enter Your Last Name" required/>
+                                                        <input class="form-control" name="lname" id="lname" type="text" placeholder="Enter Your Last Name" />
                                                         <label for="lname">Last name</label>
                                                     </div>
                                                     </div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com" required/>
+                                                <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com" />
                                                 <label for="email">Email address</label>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="pass" id="pass" type="password" placeholder="Create a password" required/>
+                                                        <input class="form-control" name="pass" id="pass" type="password" placeholder="Create a password" />
                                                         <label for="pass">Password</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" required/>
-                                                        <label for="inputPasswordConfirm">Confirm Password</label>
+                                                        <input class="form-control" id="cpass" type="password" placeholder="Confirm password" name="cpass" />
+                                                        <label for="cpass">Confirm Password</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,6 +139,7 @@ $sql = "INSERT INTO register (fname, lname, email, pass) VALUES ('$fname', '$lna
                 </footer>
             </div>
         </div>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
     </body>
