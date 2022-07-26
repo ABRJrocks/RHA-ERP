@@ -43,6 +43,7 @@ $res = mysqli_num_rows($data);
               id="name"
               placeholder="e.g. Muhammad"
               class="form-control"
+              required
             />
             <label for="name" class="form-label">First Name:</label>
           </div>
@@ -54,6 +55,7 @@ $res = mysqli_num_rows($data);
               class="form-control"
               id="St_lname"
               placeholder="e.g Ahmad"
+              required
             />
             <label  for="St_lname" class="form-label">Last Name:</label>
           </div>
@@ -64,12 +66,14 @@ $res = mysqli_num_rows($data);
               class="form-control"
               id="email-std"
               placeholder="Example@rhaerp.com"
+              required
             />
             <label  name="email" class="form-label">Email</label>
           </div>
 
           <label name="Semester" for="Semester" class="form=label">Semester</label>
-            <select name="Semester" id="Semester" class="form-select">
+            <select name="semester" id="Semester" class="form-select" required>
+            <option disabled selected value> -- Select Semester -- </option>
               <option value="1">1st</option>
               <option value="2">2nd</option>
               <option value="3">3rd</option>
@@ -80,7 +84,7 @@ $res = mysqli_num_rows($data);
               <option value="8">8th</option>
             </select>
             <br>
-            <button value="register" name="register" class="btn btn-primary" style="background-color:#34495e">Register</button>
+            <button value="register" type="submit" name="register" class="btn btn-primary" style="background-color:#34495e">Register</button>
             <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
         </form>
       </main>
@@ -118,7 +122,7 @@ else {
 <?php
 $fname = $_POST['name'];
 $St_lname = $_POST['St_lname'];
-$Semester = $_POST['Semester'];
+$Semester = $_POST['semester'];
 $email = $_POST['email'];
 
 $sql = "INSERT INTO std (fname, lname, semester, email) VALUES ('$fname', '$St_lname', '$Semester', '$email')";
@@ -129,7 +133,7 @@ if(isset($_POST["register"])){
         ?>   
         <script>
         alert("Data Inserted!")
-        window.open("http://localhost/rha-erp/st_register.html","_self")
+        window.open("http://localhost/rha-erp/st_register.php","_self")
 
     </script>
         <?php
@@ -138,7 +142,7 @@ if(isset($_POST["register"])){
     {
         ?>   
         <script>
-        alert("Data Inserted!")
+        alert("Data Not Inserted!")
         window.open("http://localhost/rha-erp/st_register.php","_self")
 
     </script>

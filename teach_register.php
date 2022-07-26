@@ -19,10 +19,35 @@ $res = mysqli_num_rows($data);
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>Dashboard-RHA Solutions</title>
+  <title>Register Teachers</title>
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
   <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+  <script>  
+function validateform(){  
+var fname=document.myform.fname.value;
+var lname=document.myform.lname.value;
+var email=document.myform.fname.value;  
+var pass=document.myform.pass.value;  
+var cpass=document.myform.cpass.value;
+if (fname==null || fname==""){  
+  alert("Please Enter First Name");  
+  return false;  
+}
+else if (lname==null || name==""){  
+  alert("Please Enter Last Name");  
+  return false;  
+}
+else if (email==null || email==""){  
+  alert("Please Enter Email");  
+  return false;  
+}
+else if(p_id== null || p_id=""){  
+  alert("Please Select Teacher's Post");  
+  return false;  
+  }
+}  
+</script>  
 </head>
 
 <body class="sb-nav-fixed">
@@ -35,7 +60,7 @@ $res = mysqli_num_rows($data);
         <!--form-->
         <div class="row justify-content-center my-5">
           <div class="col-lg-6">
-          <form action="" method="post">
+          <form action="" method="post" name="myform"  onsubmit="return validateform()">
           <div class="form-floating my-5">
             <input
             name="fname"
@@ -82,7 +107,7 @@ $res = mysqli_num_rows($data);
                 ?>
               </select>
             <br>
-            <button value="register" name="register" class="btn btn-primary" style="background-color:#34495e">Register</button>
+            <button value="register" name="register" type="submit" class="btn btn-primary" style="background-color:#34495e">Register</button>
             <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
         </form>
       </main>

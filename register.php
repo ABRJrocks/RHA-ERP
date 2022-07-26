@@ -45,11 +45,11 @@ var email=document.myform.fname.value;
 var pass=document.myform.pass.value;  
 var cpass=document.myform.cpass.value;
 if (fname==null || fname==""){  
-  alert("Name can't be blank");  
+  alert("Please Enter First Name");  
   return false;  
 }
-else if (lname==null || name==""){  
-  alert("Name can't be blank");  
+else if (lname==null || lname==""){  
+  alert("Please Enter Last Name");  
   return false;  
 }
 else if (email==null || email==""){  
@@ -58,6 +58,10 @@ else if (email==null || email==""){
 }
 else if(pass==null || pass==""){  
   alert("Please Enter Password");  
+  return false;  
+  }  
+else if(pass.length<6){  
+  alert("Password Must Have Atleast 6 Characters");  
   return false;  
   }  
   else if(cpass==null || cpass=="" || cpass==pass){  

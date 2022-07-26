@@ -30,25 +30,25 @@
                         </a>
                         <div class="sb-sidenav-menu-heading">Serivces</div>
                         <a class="nav-link collapsed" href="st_register.php">
-                            Student Data
+                            Register Student
                         </a>
                         <a class="nav-link collapsed" href="assign_course.php">
-                           Teacher Data
+                           Assign course
                         </a>
-                        <a class="nav-link collapsed" href="timetable.html">
-                            Time Table
+                        <a class="nav-link collapsed" href="create_timetable.php">
+                            Assign Slots
                         </a>
-                        <a class="nav-link collapsed" href="datesheet.html">
-                            Datesheet
+                        <a class="nav-link collapsed" href="student_enrollment_search.php">
+                            Enroll Student
                         </a>
                         <a class="nav-link collapsed" href="search.php">
-                            Find Record
+                            Find Student
                         </a>
                         <a class="nav-link collapsed" href="courses.php">
                             Add Course
                         </a>
                         <div class="sb-sidenav-menu-heading">Contact</div>
-                        <a class="nav-link" href="feedback.html">
+                        <a class="nav-link" href="feedback.php">
                             <div class="sb-nav-link-icon"><i class="feedback-menu"></i></div>
                             Feedback
                         </a>

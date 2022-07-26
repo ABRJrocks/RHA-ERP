@@ -59,6 +59,40 @@ if (isset($_POST['enroll-btn'])) {
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <script>  
+function validateform(){  
+    var c_id1=document.myform.c_id1.value;
+    var c_id2=document.myform.c_id2.value;
+    var c_id3=document.myform.c_id3.value;
+    var c_id4=document.myform.c_id4.value;
+    var c_id5=document.myform.c_id5.value;
+    var c_id6=document.myform.c_id6.value;
+if (c_id1==null || c_id1==""){  
+  alert("Please Select Course 1");  
+  return false;  
+}
+else if (c_id2==null || c_id2==""){  
+  alert("Please Select Course 2");  
+  return false;  
+}
+else if (c_id3==null || c_id3==""){  
+  alert("Please Select Course 3");  
+  return false;  
+}
+else if (c_id4==null || c_id4==""){  
+  alert("Please Select Course 4");  
+  return false;  
+}
+else if (c_id5==null || c_id5==""){  
+  alert("Please Select Course 5");  
+  return false;  
+}
+else if (c_id6==null || c_id6==""){  
+  alert("Please Select Course 6");  
+  return false;  
+}
+}  
+</script> 
 </head>
 
 <body class="sb-nav-fixed">
@@ -77,7 +111,7 @@ if (isset($_POST['enroll-btn'])) {
 
                     ?>
                     <div class="col-lg-6">
-                        <form action="" method="post">
+                        <form action="" method="post" name="myform"  onsubmit="return validateform()">
                             <div class="form-floating my-5">
 
                                 <div class="text-center">
@@ -87,6 +121,7 @@ if (isset($_POST['enroll-btn'])) {
 
                                     <label for="course" class="form-label">Course 1</label>
                                     <select name="c_id1" id="course1" class="form-select" style="margin-bottom: 20px;">
+                                    <option disabled selected value> -- Select Course 1 -- </option>
                                         <?php
                                         if ($rows != 0) {
                                             while ($res_crs = mysqli_fetch_array($data_crs)) {
@@ -101,6 +136,7 @@ if (isset($_POST['enroll-btn'])) {
 
                                     <label for="course" class="form-label">Course 2</label>
                                     <select name="c_id2" id="course2" class="form-select" style="margin-bottom: 20px;">
+                                    <option disabled selected value> -- Select Course 2-- </option>
                                         <?php
                                         if ($rows != 0) {
                                             while ($res_crs = mysqli_fetch_array($data_crs)) {
@@ -115,7 +151,8 @@ if (isset($_POST['enroll-btn'])) {
 
                                     <label for="course" class="form-label">Course 3</label>
                                     <select name="c_id3" id="course3" class="form-select" style="margin-bottom: 20px;">
-                                        <?php
+                                    <option disabled selected value> -- Select Course 3 -- </option>
+                                       <?php
                                         if ($rows != 0) {
                                             while ($res_crs = mysqli_fetch_array($data_crs)) {
                                                 echo '<option value="' . $res_crs['c_id'] . ' ">' . $res_crs['c_name'] . '</option>';
@@ -129,6 +166,7 @@ if (isset($_POST['enroll-btn'])) {
 
                                     <label for="course" class="form-label">Course 4</label>
                                     <select name="c_id4" id="course4" class="form-select" style="margin-bottom: 20px;">
+                                    <option disabled selected value> -- Select Course 4 -- </option>
                                         <?php
                                         if ($rows != 0) {
                                             while ($res_crs = mysqli_fetch_array($data_crs)) {
@@ -143,6 +181,7 @@ if (isset($_POST['enroll-btn'])) {
 
                                     <label for="course" class="form-label">Course 5</label>
                                     <select name="c_id5" id="course5" class="form-select" style="margin-bottom: 20px;">
+                                    <option disabled selected value> -- Select Course 5 -- </option>
                                         <?php
                                         if ($rows != 0) {
                                             while ($res_crs = mysqli_fetch_array($data_crs)) {
@@ -157,6 +196,7 @@ if (isset($_POST['enroll-btn'])) {
 
                                     <label for="course" class="form-label">Course 6</label>
                                     <select name="c_id6" id="course6" class="form-select" style="margin-bottom: 20px;">
+                                    <option disabled selected value> -- Select Course 6 -- </option>
                                         <?php
                                         if ($rows != 0) {
                                             while ($res_crs = mysqli_fetch_array($data_crs)) {
@@ -168,7 +208,7 @@ if (isset($_POST['enroll-btn'])) {
                                     </select>
                                 </div>
                                 <br>
-                                <button value="enroll" type="submit" name="enroll-btn" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Enroll</button>
+                                <button value="enroll" type="submit" name="enroll-btn" class="btn btn-primary" style="background-color:#34495e">Enroll</button>
                                 <a href="student_enrollment_search.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
                         </form>
                     </div>

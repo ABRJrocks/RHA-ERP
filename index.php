@@ -33,10 +33,9 @@ if($_SESSION["fname"]) {
                             <div class="card" style="width: 18rem; ">
                                 <img src="assets/1st.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">Time Table</h5>
-                                    <p class="card-text">Click on the button below to draw a time table according to
-                                        your need.</p>
-                                    <a href="create_timetable.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
+                                    <h5 class="card-title">Student List</h5>
+                                    <p class="card-text">Click on the button below to see list of the students</p>
+                                    <a href="student_list.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +45,7 @@ if($_SESSION["fname"]) {
                                 <img src="assets/2nd.jpg" style="height: 193px;" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Teachers List</h5>
-                                    <p class="card-text">Click on the button below to make datesheet of different exams.
+                                    <p class="card-text">Click on the button below to show list of All Teachers.
                                     </p>
                                     <a href="teacher_list.php" class="btn btn-primary" style="background-color:#34495e">continue</a>
                                 </div>
@@ -57,10 +56,9 @@ if($_SESSION["fname"]) {
                             <div class="card" style="width: 18rem;">
                                 <img src="assets/3rd.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">Search Student</h5>
-                                    <p class="card-text">Click on the button below to find data of any student or
-                                        teacher.</p>
-                                    <a href="search.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
+                                    <h5 class="card-title">Enrolled Student Courses</h5>
+                                    <p class="card-text">Click on the button below to display enrolled courses of Students</p>
+                                    <a href="enrolled_courses.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
                                 </div>
                             </div>
                         </div>

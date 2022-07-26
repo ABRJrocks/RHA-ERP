@@ -22,6 +22,26 @@ $res = mysqli_num_rows($data);
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
   <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+  <script>  
+function validateform(){  
+var t_id=document.myform.t_id.value;
+var c_id=document.myform.c_id.value;
+var c_num=document.myform.c_num.value;  
+if (t_id==null || t_id==""){  
+  alert("Please Select the Teacher");  
+  return false;  
+}
+else if (c_id==null || c_id==""){  
+  alert("Please Select Course");  
+  return false;  
+}
+else if (c_num==null || c_num==""){  
+  alert("Please Select Number of Lectures");  
+  return false;  
+}  
+  
+}  
+</script> 
 </head>
 
 <body class="sb-nav-fixed">
@@ -34,7 +54,7 @@ $res = mysqli_num_rows($data);
         <!--form-->
         <div class="row justify-content-center my-5">
           <div class="col-lg-6">
-            <form action="assigcrs.php" method="POST">
+            <form action="assigcrs.php" method="POST" name="myform"  onsubmit="return validateform()">
             <label for="teacher" class="form-label">Teachers</label>
               <select name="t_id" id="teacher" class="form-select" style="margin-bottom: 20px;">
               <option disabled selected value> -- Select Teacher -- </option>
@@ -76,7 +96,7 @@ $res = mysqli_num_rows($data);
                 <option value="4">4</option>
               </select>
               <br>
-              <button name="register" class="btn btn-primary" style="background-color:#34495e">Register</button>
+              <button name="register" type="submit" class="btn btn-primary" style="background-color:#34495e">Register</button>
               <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
             </form>
 

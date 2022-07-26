@@ -4,10 +4,10 @@ session_start();
 $id = $_GET['t_id'];
 if ($_SESSION["fname"]) {
     $select = "SELECT CONCAT(t.f_name, ' ', t.l_name) as name,tt.day, tt.timeslot, tt.room, c.c_name
-    FROM(timetable tt
-INNER JOIN assign_course ac ON tt.t_id = ac.t_id
-INNER JOIN teach t ON tt.t_id = t.t_id
-INNER JOIN course c ON tt.c_id = c.c_id )";
+    FROM timetable tt
+    INNER JOIN assign_course ac ON tt.t_id IN (Select t_id from assign_course where t_id = $id)
+    INNER JOIN teach t ON tt.t_id = t.t_id
+    INNER JOIN course c ON tt.c_id = c.c_id";
     $data = mysqli_query($conn, $select) or die(mysqli_error($conn));
     $row1 = mysqli_fetch_array($data);
 

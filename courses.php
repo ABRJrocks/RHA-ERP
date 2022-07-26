@@ -26,21 +26,24 @@ if($_SESSION["fname"]) {
     <div id="layoutSidenav_content">
       <main>
         <div class="text-center">
-          <h2 style="background-color:#34495e">Enter Course Information</h2>
+          <h2 style="color:#34495e">Enter Course Information</h2>
         </div>
         <!--form-->
+        <div class="row justify-content-center my-5">
+          <div class="col-lg-6">
         <form action="courses.php" method="POST">
               <div class="form-floating my-5">
-                <input type="name" name="course" id="name" placeholder="OOP" class="form-control" />
+                <input type="name" name="course" id="name" placeholder="OOP" class="form-control" required/>
                 <label for="name" class="form-label">Course Name</label>
               </div>
 
               <div class="form-floating my-5">
-                <input type="number" name="crh" class="form-control" id="crh" placeholder="e.g Sajid" />
+                <input type="number" name="crh" class="form-control" id="crh" placeholder="e.g Sajid" required/>
                 <label for="crh" class="form-label">Credit Hours</label>
               </div>
               <label name="Semester" for="Semester" class="form=label">Semester</label>
-              <select name="Semester" id="Semester" class="form-select">
+              <select name="semester" id="Semester" class="form-select" required>
+              <option disabled selected value> -- Select Semester -- </option>
                 <option value="1">1st</option>
                 <option value="2">2nd</option>
                 <option value="3">3rd</option>
@@ -98,7 +101,7 @@ if(isset($_POST["register"])){
         ?>   
         <script>
         alert("Course Added!")
-        window.open("http://localhost/rha-erp/courses.html","_self")
+        window.open("http://localhost/rha-erp/courses.php","_self")
     </script>
         <?php
     }

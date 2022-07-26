@@ -90,7 +90,7 @@ if($_SESSION["fname"]) {
                                             $rescrs6 = mysqli_fetch_array($datacrs6);
                                             echo $rescrs6['c_name']; ?></td>
 
-                                        <td> <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="edit_student.php?sap_id=<?php echo $row['sap_id']; ?>">Edit</a></button></td>
+                                        <td> <button type="button" class="btn btn-primary" style="background-color:#34495e"><a style="color: white; text-decoration: none;" href="edit_student.php?sap_id=<?php echo $row['sap_id']; ?>">Edit</a></button></td>
 
                                     </tr>
                                 <?php

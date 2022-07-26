@@ -25,10 +25,10 @@ if($_SESSION["fname"]) {
         <div id="layoutSidenav_content">
             <main>
                 <div class="text-center">
-                    <h2 style="style=color:#34495e">Enroll Student</h2>
+                    <h2 style="color:#34495e">Enroll Student</h2>
                 </div>
                 <div class="text-center">
-                    <h4 style="background-color:#34495e; margin-top: 50px;">Search Student</h2>
+                    <h4 style="color:#34495e; margin-top: 50px;">Search Student</h2>
                 </div>
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-2">
