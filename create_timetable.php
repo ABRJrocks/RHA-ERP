@@ -31,7 +31,7 @@ if ($_SESSION["fname"]) {
 
       <main>
         <div class="text-center">
-          <h2 style="color: rgb(79, 10, 241);">Assign Course to Slot</h2>
+          <h2 style="color:#34495e">Assign Course to Slot</h2>
         </div>
         <!--form-->
 
@@ -77,7 +77,7 @@ if ($_SESSION["fname"]) {
                   ?>
                 </select>
                 <br>
-                <button id="proceed" name="proceed" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Next</button>
+                <button id="proceed" name="proceed" class="btn btn-primary" style="background-color:#34495e">Next</button>
                 
                 <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
               </form>
@@ -117,7 +117,7 @@ if ($_SESSION["fname"]) {
                 <option value="206">206</option>
               </select>
               <br>
-              <button type="submit" name="register" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Register</button>
+              <button type="submit" name="register" class="btn btn-primary" style="background-color:#34495e">Register</button>
               <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
               </form>
             <?php

@@ -66,7 +66,7 @@ if (isset($_POST['enroll-btn'])) {
         <div id="layoutSidenav_content">
             <main>
                 <div class="text-center">
-                    <h2 style="color: rgb(79, 10, 241);">Enroll Student</h2>
+                    <h2 style="color:#34495e">Enroll Student</h2>
                 </div>
                 <div class="row justify-content-center my-5">
                     <!-- FORM -->
@@ -81,7 +81,7 @@ if (isset($_POST['enroll-btn'])) {
                             <div class="form-floating my-5">
 
                                 <div class="text-center">
-                                    <h2 style="color: rgb(79, 10, 241);"><?php echo $res['fname'] ?> <?php echo $res['lname'] ?></h2>
+                                    <h2 style="color:#34495e"><?php echo $res['fname'] ?> <?php echo $res['lname'] ?></h2>
                                 </div>
                                 <div>
 

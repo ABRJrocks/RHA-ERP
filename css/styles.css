@@ -216,7 +216,7 @@ table td {
 }
 
 .card:hover {
-  box-shadow: 10px 20px 10px rgb(79, 10, 241);
+  box-shadow: 10px 20px 10px #34495e;
 }
 
 /*  */
@@ -5497,7 +5497,7 @@ fieldset:disabled .btn {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 1px solid #34495e;
   border-radius: 0.25rem;
 }
 

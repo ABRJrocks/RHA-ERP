@@ -86,7 +86,7 @@ INNER JOIN course c ON tt.c_id = c.c_id )";
                             </tbody>
                         </table>
                     </div>
-                    <input type="button" class="btn btn-primary" value="Create PDF" id="btPrint" onclick="createPDF()" />
+                    <input type="button" style="background-color:#34495e" class="btn btn-primary" value="Create PDF" id="btPrint" onclick="createPDF()" />
 
             </main>
             <footer class="py-4 bg-light mt-auto">

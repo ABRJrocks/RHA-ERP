@@ -27,7 +27,7 @@ if($_SESSION["fname"]) {
                     <form action="Teacher_Search.php" method="GET" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                         <div style="margin-bottom: 20px;" class="input-group">
                             <input class="form-control" name="search" value="" type="number" placeholder="Enter Teacher ID" />
-                            <button class="btn btn-primary" id="std-search" type="submit"> <i class="fas fa-search"></i></button>
+                            <button class="btn btn-primary" id="std-search" type="submit" style="background-color:#34495e"> <i class="fas fa-search"></i></button>
                         </div>
                     </form>
                     <table class="table">

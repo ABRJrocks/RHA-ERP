@@ -25,17 +25,17 @@ if($_SESSION["fname"]) {
         <div id="layoutSidenav_content">
             <main>
                 <div class="text-center">
-                    <h2 style="color: rgb(79, 10, 241);">Enroll Student</h2>
+                    <h2 style="style=color:#34495e">Enroll Student</h2>
                 </div>
                 <div class="text-center">
-                    <h4 style="color: rgb(79, 10, 241); margin-top: 50px;">Search Student</h2>
+                    <h4 style="background-color:#34495e; margin-top: 50px;">Search Student</h2>
                 </div>
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-2">
                         <form action="" method="GET">
                             <div style="margin-bottom: 20px;" class="input-group">
                                 <input class="form-control" name="search" value="" type="number" placeholder="Enter SAP ID" />
-                                <button class="btn btn-primary" id="std-search" type="submit"> <i class="fas fa-search"></i></button>
+                                <button class="btn btn-primary" id="std-search" type="submit" style="background-color:#34495e"> <i class="fas fa-search"></i></button>
                             </div>
                         </form>
                     </div>

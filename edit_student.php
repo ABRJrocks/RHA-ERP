@@ -30,7 +30,7 @@ if($_SESSION["fname"]) {
                     <div class="row justify-content-center my-5">
                         <div class="col-lg-6">
                             <div class="text-center">
-                                <h2 style="color: rgb(79, 10, 241);">Edit Student Data</h2>
+                                <h2 style="background-color:#34495e">Edit Student Data</h2>
                             </div>
                             <form action="" method="post">
                                 <div class="form-floating my-5">
@@ -59,7 +59,7 @@ if($_SESSION["fname"]) {
                                     <option value="8">8th</option>
                                 </select>
                                 <br>
-                                <button value="Update" name="update-btn" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Update</button>
+                                <button value="Update" name="update-btn" class="btn btn-primary" style="background-color:#34495e">Update</button>
                                 <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
                             </form>
                         </div>

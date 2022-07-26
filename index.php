@@ -36,7 +36,7 @@ if($_SESSION["fname"]) {
                                     <h5 class="card-title">Time Table</h5>
                                     <p class="card-text">Click on the button below to draw a time table according to
                                         your need.</p>
-                                    <a href="create_timetable.php" class="btn btn-primary">Continue</a>
+                                    <a href="create_timetable.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@ if($_SESSION["fname"]) {
                                     <h5 class="card-title">Teachers List</h5>
                                     <p class="card-text">Click on the button below to make datesheet of different exams.
                                     </p>
-                                    <a href="teacher_list.php" class="btn btn-primary">continue</a>
+                                    <a href="teacher_list.php" class="btn btn-primary" style="background-color:#34495e">continue</a>
                                 </div>
                             </div>
                         </div>
@@ -57,10 +57,10 @@ if($_SESSION["fname"]) {
                             <div class="card" style="width: 18rem;">
                                 <img src="assets/3rd.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">Find Record</h5>
+                                    <h5 class="card-title">Search Student</h5>
                                     <p class="card-text">Click on the button below to find data of any student or
                                         teacher.</p>
-                                    <a href="database.html" class="btn btn-primary">Continue</a>
+                                    <a href="search.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
                                 </div>
                             </div>
                         </div>

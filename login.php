@@ -47,7 +47,7 @@ error_reporting(0);
           <nav class="navbar">
             <div class="container-fluid">
             <a class="navbar-brand ps-3" href="index.php" style="font-family:Pacifico,cursive; 
-            color: #34495e,font-size: 2.5 rem;">RHA Solutions</a>
+            color: #34495e">RHA Solutions</a>
             </div>
           </nav>
           <br /><br /><br />

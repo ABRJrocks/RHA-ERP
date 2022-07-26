@@ -26,7 +26,7 @@ if($_SESSION["fname"]) {
     <div id="layoutSidenav_content">
       <main>
         <div class="text-center">
-          <h2 style="color: rgb(79, 10, 241);">Enter Course Information</h2>
+          <h2 style="background-color:#34495e">Enter Course Information</h2>
         </div>
         <!--form-->
         <form action="courses.php" method="POST">
@@ -51,7 +51,7 @@ if($_SESSION["fname"]) {
                 <option value="8">8th</option>
               </select>
               <br>
-              <button name="register" type="submit" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Register</button>
+              <button name="register" type="submit" class="btn btn-primary" style="background-color:#34495e">Register</button>
               <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
             </form>
       </main>

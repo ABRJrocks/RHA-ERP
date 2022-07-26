@@ -38,7 +38,7 @@ $sql = "INSERT INTO register (fname, lname, email, pass) VALUES ('$fname', '$lna
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-primary">
+    <body style="background-color:#34495e">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -82,7 +82,7 @@ $sql = "INSERT INTO register (fname, lname, email, pass) VALUES ('$fname', '$lna
                                                 </div>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <button type="submit" class="btn btn-primary btn-block" name="register">Register</button>
+                                                <button type="submit" class="btn btn-primary btn-block" name="register" style="background-color:#34495e">Register</button>
                                             </div>
                                         </form>
                                     </div>

@@ -62,7 +62,7 @@ if($_SESSION["fname"]) {
                 <option value="4">4</option>
               </select>
               <br>
-              <button name="update-btn" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Update</button>
+              <button name="update-btn" class="btn btn-primary" style="background-color:#34495e">Update</button>
               <a href="index.html" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
             </form>
             </main>

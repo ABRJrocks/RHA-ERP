@@ -30,7 +30,7 @@ $res = mysqli_num_rows($data);
     <div id="layoutSidenav_content">
       <main>
         <div class="text-center">
-          <h2 style="color: rgb(79, 10, 241);">Register Students</h2>
+          <h2 style="color:#34495e">Register Students</h2>
         </div>
         <!--form-->
         <div class="row justify-content-center my-5">
@@ -80,7 +80,7 @@ $res = mysqli_num_rows($data);
               <option value="8">8th</option>
             </select>
             <br>
-            <button value="register" name="register" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Register</button>
+            <button value="register" name="register" class="btn btn-primary" style="background-color:#34495e">Register</button>
             <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
         </form>
       </main>

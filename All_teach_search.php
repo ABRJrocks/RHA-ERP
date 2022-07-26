@@ -26,7 +26,7 @@ if($_SESSION["fname"]) {
                     <form action="All_teach_search.php" method="GET" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                         <div style="margin-bottom: 20px;" class="input-group">
                             <input class="form-control" name="search" value="" type="number" placeholder="Enter Teacher ID" />
-                            <button class="btn btn-primary" id="std-search" type="submit"> <i class="fas fa-search"></i></button>
+                            <button class="btn btn-primary" id="std-search" type="submit" style="background-color:#34495e"> <i class="fas fa-search"></i></button>
                         </div>
                     </form>
                     <table class="table">
@@ -61,6 +61,7 @@ if($_SESSION["fname"]) {
                                         <td><?php echo $row['p_sal']; ?></td>
                                         <td> <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="edit_teacher.php?t_id=<?php echo $row['t_id']; ?>">Edit</a></button></td>
                                         <td> <button type="button" class="btn btn-danger"> <a style="color: white; text-decoration: none;" onclick="return confirm('Are you sure, you want to delete?')" href="delete_teach.php?t_id=<?php echo $row['t_id']; ?>">Delete</a></td>
+                                        
                                     </tr>
                                     <?php
                                 }
