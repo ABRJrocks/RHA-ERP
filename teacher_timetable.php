@@ -42,6 +42,7 @@ INNER JOIN course c ON tt.c_id = c.c_id )";
         <meta name="author" content="" />
         <title>Time Table</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <script src="js/scripts.js"></script>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -51,36 +52,41 @@ INNER JOIN course c ON tt.c_id = c.c_id )";
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Time Table of <?php echo $row1['name'] ?></h1>
                     <!-- / College Timetable -->
-                    <table class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Day
-                                </th>
-                                <th scope="col">Timeslot
-                                </th>
-                                <th scope="col">Room no.
-                                </th>
-                                <th scope="col">Course Name
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            while ($row = mysqli_fetch_array($data)) {
-                            ?>
+                    <div id="tab">
+                        <h1 class="mt-4">Time Table of <?php echo $row1['name'] ?></h1>
+                        <br>
+                        <br>
+                        <table class="table">
+                            <thead class="thead-dark">
                                 <tr>
-                                    <td><?php echo $row['day']; ?></td>
-                                    <td><?php echo timeslot($row['timeslot']); ?></td>
-                                    <td><?php echo $row['room']; ?></td>
-                                    <td><?php echo $row['c_name']; ?></td>
+                                    <th scope="col">Day
+                                    </th>
+                                    <th scope="col">Timeslot
+                                    </th>
+                                    <th scope="col">Room no.
+                                    </th>
+                                    <th scope="col">Course Name
+                                    </th>
                                 </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php
+                                while ($row = mysqli_fetch_array($data)) {
+                                ?>
+                                    <tr>
+                                        <td><?php echo $row['day']; ?></td>
+                                        <td><?php echo timeslot($row['timeslot']); ?></td>
+                                        <td><?php echo $row['room']; ?></td>
+                                        <td><?php echo $row['c_name']; ?></td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <input type="button" class="btn btn-primary" value="Create PDF" id="btPrint" onclick="createPDF()" />
 
             </main>
             <footer class="py-4 bg-light mt-auto">
@@ -109,6 +115,8 @@ INNER JOIN course c ON tt.c_id = c.c_id )";
     <script src="assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
+
+
     </body>
 
     </html>
