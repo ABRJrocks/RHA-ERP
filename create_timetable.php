@@ -78,6 +78,7 @@ if ($_SESSION["fname"]) {
                 </select>
                 <br>
                 <button id="proceed" name="proceed" class="btn btn-primary" style="background-color: rgb(75, 48, 226)">Next</button>
+                
                 <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
               </form>
             </div>

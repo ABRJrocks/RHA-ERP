@@ -11,6 +11,6 @@ if(!$conn)
 }
 else
 {
-    echo"Connection Built Successfuly!";
+    
 }
 ?>
