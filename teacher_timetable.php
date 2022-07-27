@@ -7,7 +7,7 @@ if ($_SESSION["fname"]) {
     FROM timetable tt
     INNER JOIN assign_course ac ON tt.t_id IN (Select t_id from assign_course where t_id = $id)
     INNER JOIN teach t ON tt.t_id = t.t_id
-    INNER JOIN course c ON tt.c_id = c.c_id";
+    INNER JOIN course c ON tt.c_id = c.c_id where tt.t_id = $id";
     $data = mysqli_query($conn, $select) or die(mysqli_error($conn));
     $row1 = mysqli_fetch_array($data);
 

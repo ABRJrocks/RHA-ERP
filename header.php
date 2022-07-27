@@ -38,9 +38,7 @@
                         <a class="nav-link collapsed" href="create_timetable.php">
                             Assign Slots
                         </a>
-                        <a class="nav-link collapsed" href="student_enrollment_search.php">
-                            Enroll Student
-                        </a>
+                        
                         <a class="nav-link collapsed" href="search.php">
                             Find Student
                         </a>

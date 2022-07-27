@@ -30,7 +30,7 @@ if($_SESSION["fname"]) {
                     <div class="row justify-content-center my-5">
                         <div class="col-lg-6">
                             <div class="text-center">
-                                <h2 style="background-color:#34495e">Edit Course Data</h2>
+                                <h2 style="color:#34495e">Edit Course Data</h2>
                             </div>
                             <form action="" method="POST">
               <div class="form-floating my-5">

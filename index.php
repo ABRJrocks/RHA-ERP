@@ -65,9 +65,9 @@ if($_SESSION["fname"]) {
                         <div class="col col-md-2">
                             <div class="card" style="width: 18rem; ">
                                 <div class="card-body">
-                                    <h5 class="card-title">Student List</h5>
+                                    <h5 class="card-title">Course List</h5>
                                     <p class="card-text">Click on the button below to see list of the students</p>
-                                    <a href="student_list.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
+                                    <a href="display_course.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
                                 </div>
                             </div>
                         </div>
@@ -76,10 +76,10 @@ if($_SESSION["fname"]) {
                             <div class="card" style="width: 18rem;">
                                
                                 <div class="card-body">
-                                    <h5 class="card-title">Teachers List</h5>
-                                    <p class="card-text">Click on the button below to show list of All Teachers.
+                                    <h5 class="card-title">Enroll Student in Coures</h5>
+                                    <p class="card-text">Click Below to Enroll Student to courses.
                                     </p>
-                                    <a href="teacher_list.php" class="btn btn-primary" style="background-color:#34495e">continue</a>
+                                    <a href="student_enrollment_search.php" class="btn btn-primary" style="background-color:#34495e">continue</a>
                                 </div>
                             </div>
                         </div>
