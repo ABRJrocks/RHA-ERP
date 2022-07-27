@@ -43,8 +43,8 @@ if($_SESSION["fname"]) {
                             <div class="card" style="width: 18rem;">
                                
                                 <div class="card-body">
-                                    <h5 class="card-title">Teachers List</h5>
-                                    <p class="card-text">Click on the button below to show list of All Teachers.
+                                    <h5 class="card-title">Teachers Assigned Courses</h5>
+                                    <p class="card-text">Click on the button below to show list of All Teachers with Assigned Courses.
                                     </p>
                                     <a href="teacher_list.php" class="btn btn-primary" style="background-color:#34495e">continue</a>
                                 </div>
@@ -63,10 +63,10 @@ if($_SESSION["fname"]) {
                         <div class="row">
                         <div class="col col-md-1"></div>
                         <div class="col col-md-2">
-                            <div class="card" style="width: 18rem; ">
+                            <div class="card" style="width: 18rem;">
                                 <div class="card-body">
                                     <h5 class="card-title">Course List</h5>
-                                    <p class="card-text">Click on the button below to see list of the students</p>
+                                    <p class="card-text">Click on the button below to see list of all courses</p>
                                     <a href="display_course.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@ if($_SESSION["fname"]) {
                             <div class="card" style="width: 18rem;">
                                
                                 <div class="card-body">
-                                    <h5 class="card-title">Enroll Student in Coures</h5>
+                                    <h5 class="card-title">Enroll Student in Coureses</h5>
                                     <p class="card-text">Click Below to Enroll Student to courses.
                                     </p>
                                     <a href="student_enrollment_search.php" class="btn btn-primary" style="background-color:#34495e">continue</a>
@@ -87,7 +87,7 @@ if($_SESSION["fname"]) {
                         <div class="col col-md-2">
                             <div class="card" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Show Teacher Information</h5>
+                                    <h5 class="card-title">Registered Teacher</h5>
                                     <p class="card-text">Click on the button below to see Teachers Information</p>
                                     <a href="all_teach_list.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
                                 </div>

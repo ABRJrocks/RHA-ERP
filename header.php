@@ -32,15 +32,20 @@
                         <a class="nav-link collapsed" href="st_register.php">
                             Register Student
                         </a>
+                        <a class="nav-link collapsed" href="teach_register.php">
+                            Register teacher
+                        </a>
                         <a class="nav-link collapsed" href="assign_course.php">
                            Assign course
                         </a>
                         <a class="nav-link collapsed" href="create_timetable.php">
                             Assign Slots
                         </a>
-                        
                         <a class="nav-link collapsed" href="search.php">
                             Find Student
+                        </a>
+                        <a class="nav-link collapsed" href="Teacher_search.php">
+                            Find Teacher
                         </a>
                         <a class="nav-link collapsed" href="courses.php">
                             Add Course
