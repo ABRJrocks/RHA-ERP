@@ -111,7 +111,7 @@ if($_SESSION["fname"]) {
                                 <div class="card-body">
                                     <h5 class="card-title">Show Schedule</h5>
                                     <p class="card-text">Click on the button to see Timetable</p>
-                                    <a href="display_course.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
+                                    <a href="timetable.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
                                 </div>
                             </div>
                         </div>
