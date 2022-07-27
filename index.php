@@ -60,7 +60,7 @@ if($_SESSION["fname"]) {
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                    <div class="row">
                         <div class="col col-md-1"></div>
                         <div class="col col-md-2">
                             <div class="card" style="width: 18rem;">
@@ -90,6 +90,18 @@ if($_SESSION["fname"]) {
                                     <h5 class="card-title">Registered Teacher</h5>
                                     <p class="card-text">Click on the button below to see Teachers Information</p>
                                     <a href="all_teach_list.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-md-1"></div>
+                        <div class="col col-md-2">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Search Course</h5>
+                                    <p class="card-text">Click on the button below to Search courses</p>
+                                    <a href="display_course.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
                                 </div>
                             </div>
                         </div>
