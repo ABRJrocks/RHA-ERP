@@ -63,7 +63,7 @@ if($_SESSION["fname"]) {
               </select>
               <br>
               <button name="update-btn" class="btn btn-primary" style="background-color:#34495e">Update</button>
-              <a href="index.html" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
+              <a href="index.php" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
             </form>
             </main>
             <footer class="py-4 bg-light mt-auto">
