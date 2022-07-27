@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2022 at 09:18 PM
+-- Generation Time: Jul 27, 2022 at 03:21 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -38,8 +38,9 @@ CREATE TABLE `assign_course` (
 --
 
 INSERT INTO `assign_course` (`t_id`, `c_id`, `c_num`) VALUES
-(1, 1, 2),
-(1, 13, 1);
+(3, 2, 4),
+(2, 8, 2),
+(1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -125,7 +126,9 @@ INSERT INTO `register` (`fname`, `lname`, `email`, `pass`) VALUES
 ('Abdul', 'Rafay', 'ahmadraza16042002@gmail.com', 'aaaaa'),
 ('Ahmad', 'Raza', 'ahmadraza16042002@gmail.com', '12345678'),
 ('Hasnain', 'Sajid', 'hasajid882@gmail.com', '1234'),
-('Abdul', 'Rafay', 'abdulrafeh380@gmail.com', 'admin');
+('Abdul', 'Rafay', 'abdulrafeh380@gmail.com', 'admin'),
+('Mueed', 'Khan', 'mueed@hotmail.com', '1234'),
+('Zain', 'Raza', 'zain@gmail.com', '1234');
 
 -- --------------------------------------------------------
 
@@ -149,7 +152,8 @@ INSERT INTO `std` (`fname`, `lname`, `sap_id`, `semester`, `email`) VALUES
 ('Abdul', 'Rafay', 25602, '5', 'abdulrafeh380@gmail.com'),
 ('Ahmad', 'Raza', 25603, '3', 'ahmadraza123@gmail.com'),
 ('Husnain', 'Sajid', 25604, '3', 'hassi@gmail.com'),
-('Fahad', 'Khan', 25606, '5', 'fahadkhan@gmail.com');
+('Fahad', 'Khan', 25606, '5', 'fahadkhan@gmail.com'),
+('Bilal', 'Fareed', 25611, '5', 'taunsa@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -174,11 +178,7 @@ CREATE TABLE `std_enroll_course` (
 --
 
 INSERT INTO `std_enroll_course` (`sap_id`, `std_name`, `crs1`, `crs2`, `crs3`, `crs4`, `crs5`, `crs6`, `sr`) VALUES
-(25604, 'Husnain Sajid', 2, 1, 3, 3, 2, 1, 1),
-(25602, 'Abdul Rafay', 3, 2, 1, 3, 3, 2, 2),
-(25603, 'Ahmad Raza', 1, 3, 2, 1, 2, 3, 3),
-(25603, 'Ahmad Raza', 0, 0, 0, 0, 0, 0, 4),
-(25606, 'Fahad Khan', 2, 1, 3, 0, 0, 0, 5);
+(25602, 'Abdul Rafay', 17, 3, 8, 13, 15, 16, 1);
 
 -- --------------------------------------------------------
 
@@ -200,7 +200,8 @@ CREATE TABLE `teach` (
 
 INSERT INTO `teach` (`t_id`, `f_name`, `l_name`, `email`, `p_id`) VALUES
 (1, 'Zarmina', 'Jahangir', 'zjay@gmail.com', 4),
-(2, 'Ahmad', 'Arslan', 'arslan@gmail.com', 1);
+(2, 'Ahmad', 'Arslan', 'arslan@gmail.com', 1),
+(3, 'Muhammad', 'Fawad', 'fawad123@gmail.com', 4);
 
 -- --------------------------------------------------------
 
@@ -209,6 +210,7 @@ INSERT INTO `teach` (`t_id`, `f_name`, `l_name`, `email`, `p_id`) VALUES
 --
 
 CREATE TABLE `timetable` (
+  `table_id` int(11) NOT NULL,
   `day` varchar(30) NOT NULL,
   `Timeslot` int(30) NOT NULL,
   `room` int(11) NOT NULL,
@@ -220,8 +222,11 @@ CREATE TABLE `timetable` (
 -- Dumping data for table `timetable`
 --
 
-INSERT INTO `timetable` (`day`, `Timeslot`, `room`, `c_id`, `t_id`) VALUES
-('Monday', 1, 203, 13, 1);
+INSERT INTO `timetable` (`table_id`, `day`, `Timeslot`, `room`, `c_id`, `t_id`) VALUES
+(1, 'Monday', 1, 201, 1, 1),
+(2, 'Monday', 2, 202, 8, 2),
+(3, 'Tuesday', 3, 202, 2, 3),
+(4, 'Wednsday', 2, 204, 2, 3);
 
 --
 -- Indexes for dumped tables
@@ -267,6 +272,7 @@ ALTER TABLE `teach`
 -- Indexes for table `timetable`
 --
 ALTER TABLE `timetable`
+  ADD PRIMARY KEY (`table_id`),
   ADD KEY `fk_c_id` (`c_id`),
   ADD KEY `fk_t_id` (`t_id`);
 
@@ -278,25 +284,31 @@ ALTER TABLE `timetable`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `c_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `c_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `std`
 --
 ALTER TABLE `std`
-  MODIFY `sap_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25607;
+  MODIFY `sap_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25612;
 
 --
 -- AUTO_INCREMENT for table `std_enroll_course`
 --
 ALTER TABLE `std_enroll_course`
-  MODIFY `sr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `sr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `teach`
 --
 ALTER TABLE `teach`
-  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `timetable`
+--
+ALTER TABLE `timetable`
+  MODIFY `table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

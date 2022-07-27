@@ -38,7 +38,6 @@ if($_SESSION["fname"]) {
                                 <th scope="col">Assigned Course</th>
                                 <th scope="col">No. Of Lectures</th>
                                 <th scope="col" colspan="2">Action</th>
-                                <th scope="col">View Schedule</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,7 +63,6 @@ if($_SESSION["fname"]) {
                                         <td><?php echo $row['c_num']; ?></td>
                                         <td> <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="edit_assign.php?t_id=<?php echo $row['t_id']; ?>">Edit</a></button></td>
                                         <td> <button type="button" class="btn btn-danger"> <a style="color: white; text-decoration: none;" onclick="return confirm('Are you sure, you want to delete?')" href="delete_assign.php?t_id=<?php echo $row['t_id']; ?>">Delete</a></td>
-                                        <td> <button type="button" class="btn btn-primary"><a style="color: white; text-decoration: none;" href="teacher_timetable.php?t_id=<?php echo $row['t_id']; ?>">Schedule</a></button></td>
                                     </tr>
                                 <?php
                                 }

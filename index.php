@@ -105,6 +105,16 @@ if($_SESSION["fname"]) {
                                 </div>
                             </div>
                         </div>
+                        <div class="col col-dash col-md-1"></div>
+                        <div class="col col-md-2">
+                            <div class="card" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Show Schedule</h5>
+                                    <p class="card-text">Click on the button to see Timetable</p>
+                                    <a href="display_course.php" class="btn btn-primary" style="background-color:#34495e">Continue</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
             
             </main>

@@ -1,15 +1,13 @@
 <?php
 include 'connection.php';
 session_start();
-$id = $_GET['t_id'];
 if ($_SESSION["fname"]) {
-    $select = "SELECT CONCAT(t.f_name, ' ', t.l_name) as name,tt.day, tt.timeslot, tt.room, c.c_name
+    $select = "SELECT tt.day, tt.timeslot, tt.room, c.c_name,CONCAT(t.f_name,' ',t.l_name)as name
     FROM timetable tt
-    INNER JOIN assign_course ac ON tt.t_id IN (Select t_id from assign_course where t_id = $id)
+    INNER JOIN course c ON tt.c_id = c.c_id
     INNER JOIN teach t ON tt.t_id = t.t_id
-    INNER JOIN course c ON tt.c_id = c.c_id";
+    Order By tt.day,tt.timeslot";
     $data = mysqli_query($conn, $select) or die(mysqli_error($conn));
-    $row1 = mysqli_fetch_array($data);
 
     function timeslot($slot)
     {
@@ -54,7 +52,7 @@ if ($_SESSION["fname"]) {
                 <div class="container-fluid px-4">
                     <!-- / College Timetable -->
                     <div id="tab">
-                        <h1 class="mt-4">Time Table of <?php echo $row1['name'] ?></h1>
+                        
                         <br>
                         <br>
                         <table class="table">
@@ -68,6 +66,8 @@ if ($_SESSION["fname"]) {
                                     </th>
                                     <th scope="col">Course Name
                                     </th>
+                                    <th scope="col">Teacher Name
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,6 +79,7 @@ if ($_SESSION["fname"]) {
                                         <td><?php echo timeslot($row['timeslot']); ?></td>
                                         <td><?php echo $row['room']; ?></td>
                                         <td><?php echo $row['c_name']; ?></td>
+                                        <td><?php echo $row['name']; ?></td>
                                     </tr>
                                 <?php
                                 }
