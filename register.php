@@ -64,7 +64,7 @@ else if(pass.length<6){
   alert("Password Must Have Atleast 6 Characters");  
   return false;  
   }  
-  else if(cpass==null || cpass=="" || cpass==pass){  
+  else if(cpass===null || cpass==="" || cpass!==pass){  
   alert("Please Confirm Password");  
   return false;  
   }  
